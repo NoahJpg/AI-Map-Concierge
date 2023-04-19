@@ -26,12 +26,15 @@
 * _JavaScript_
 * _MongoDB_
 * _NPM_
-* __
+* _NoSQL_
+* _WalkScore API_
+* _Zillow API_
+* _City-Data API_
+
 
 ## Setup and Installation Requirements
 
-
-
+* _TBD_
 
 ## Known Bugs
 
