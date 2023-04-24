@@ -20,6 +20,8 @@
 ## Description
 #### _A web app that lets you find your ideal neighborhood._
 
+
+
 ## Technologies Used
 
 * _React_

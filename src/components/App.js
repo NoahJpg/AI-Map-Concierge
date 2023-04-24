@@ -1,7 +1,8 @@
 import '../App.css';
 import { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
-import geoJSONData from '../data/geoJSONData.json';
+import { Map, GoogleApiWrapper, Marker, PlacesService, geoJSON} from 'google-maps-react';
+import nycNeighborhoodData from '../data/nycNeighborhoodData.json';
+
 
 class MapContainer extends Component {
   constructor(props) {
@@ -28,12 +29,12 @@ class MapContainer extends Component {
         google = {google}
         style={{ width:"100%", height:"100%" }}
         zoom = {10}
-        initialCenter= {{ lat: 40, lng: -80 }}
+        initialCenter= {{ lat: 40.7128, lng: -74.0060 }}
         mapContainerClassName="map-container"
         onClick={this.onMapClick}
       >
         <geoJSON
-          data={geoJSONData}
+          data={nycNeighborhoodData}
           fillColor="#FF0000"
           strokeColor="#000000"
         />
