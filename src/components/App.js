@@ -8,7 +8,8 @@ class MapContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      markers: []
+      markers: [],
+      mapMounted: false,
     };
   }
 
@@ -20,12 +21,35 @@ class MapContainer extends Component {
     this.setState({ markers: [...this.state.markers, newMarker] });
   };
 
+  componentDidMount() {
+    this.setState({ mapMounted: true });
+    const { google } = this.props;
+    const service = new google.maps.places.PlacesService(this.map);
+    const request = {
+      location : { lat: 40.7128, lng: -74.0060 },
+      radius: 5000,
+      type: ['restaurant']
+    };
+
+    service.nearbySearch(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(results);
+      }
+    });
+  }
+
   render() {
     const { google } = this.props;
-    const { markers } = this.state;
+    const { markers, mapMounted } = this.state;
+
+    if (!mapMounted) {
+      return null;
+    }
 
     return (
       <Map
+        ref={(map) => this.map = map}
+        id="map"
         google = {google}
         style={{ width:"100%", height:"100%" }}
         zoom = {10}
