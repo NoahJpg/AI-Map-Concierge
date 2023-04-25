@@ -5,11 +5,14 @@ function WalkScore(props) {
 
   useEffect(() => {
     const fetchWalkScore = async () => {
-      const response = await fetch
-      (`https://cors-anywhere.herokuapp.com/`);
-
+      try {
+      const response = await fetch(`http://localhost:3000/score?format=json&lat=${props.lat}&lon=${props.lng}&wsapikey=${process.env.REACT_APP_WALKSCORE_KEY}`);
       const data = await response.json();
+      console.log(data);
       setWalkScore(data.walkscore);
+    } catch (error) {
+      console.error("Error fetching WalkScore", error)
+    }
     };
     fetchWalkScore();
   }, [props.lat, props.lng]);
