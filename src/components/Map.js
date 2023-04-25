@@ -4,8 +4,7 @@ import { InfoWindow } from '@react-google-maps/api';
 import WalkScore from "./WalkScore";
 
 
-class MapContainer extends Component {
-  
+class MapContainer extends Component {  
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +12,7 @@ class MapContainer extends Component {
       mapMounted: false,
       lat: null,
       lng: null,
+      address: null,
     };
     this.mapRef = React.createRef();
   }
@@ -62,6 +62,9 @@ class MapContainer extends Component {
       return null;
     }
 
+  const encodedAddress = encodeURIComponent(address);
+  console.log("encoded address:", encodedAddress)
+
     return (
       <div>
         <Map
@@ -88,7 +91,7 @@ class MapContainer extends Component {
             <WalkScore 
               lat={lat}
               lng={lng}
-              address={address}
+              address={encodedAddress}
             />
           )}
 
