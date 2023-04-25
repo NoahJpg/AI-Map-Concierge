@@ -32,11 +32,31 @@ class MapContainer extends Component {
       lat: newMarker.lat, 
       lng: newMarker.lng 
     });
+
+    this.getAddressFromLatLong(newMarker.lat, newMarker.lng);
   };
+
+  getAddressFromLatLong = async (lat, lng) => {
+    const apiKey = "AIzaSyDcuIlFK46ovUX1gU8KvqjqYYVPOrHMbRU"
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.results.length > 0) {
+      const address = data.results[0].formatted_address;
+      this.setState({ address }, () => {
+        console.log("Address:", address)
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   render() {
     const { google } = this.props;
-    const { markers, mapMounted, lat, lng } = this.state;
+    const { markers, mapMounted, lat, lng, address } = this.state;
 
     if (!mapMounted) {
       return null;
@@ -68,6 +88,7 @@ class MapContainer extends Component {
             <WalkScore 
               lat={lat}
               lng={lng}
+              address={address}
             />
           )}
 
