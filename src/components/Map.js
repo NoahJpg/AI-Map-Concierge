@@ -37,7 +37,7 @@ class MapContainer extends Component {
   };
 
   getAddressFromLatLong = async (lat, lng) => {
-    const apiKey = "process.env.REACT_APP_GMAP_KEY"
+    const apiKey = process.env.REACT_APP_GMAP_KEY
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
 
   try {
@@ -101,5 +101,5 @@ class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "process.env.REACT_APP_GMAP_KEY"
+  apiKey: process.env.REACT_APP_GMAP_KEY
 })(MapContainer);
