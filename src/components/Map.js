@@ -37,7 +37,11 @@ class MapContainer extends Component {
   };
 
   getAddressFromLatLong = async (lat, lng) => {
+<<<<<<< HEAD
     const apiKey = "process.env.REACT_APP_GMAP_KEY"
+=======
+    const apiKey = "AIzaSyDcuIlFK46ovUX1gU8KvqjqYYVPOrHMbRU"
+>>>>>>> fc4f3c0 (successfully generate an address based on coordinates of click)
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
 
   try {
@@ -91,7 +95,11 @@ class MapContainer extends Component {
             <WalkScore 
               lat={lat}
               lng={lng}
+<<<<<<< HEAD
               address={encodedAddress}
+=======
+              address={address}
+>>>>>>> fc4f3c0 (successfully generate an address based on coordinates of click)
             />
           )}
 
