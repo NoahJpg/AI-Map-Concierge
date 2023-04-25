@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
+import WalkScore from "./WalkScore";
+
 
 class MapContainer extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       markers: [],
       mapMounted: false,
+      lat: null,
+      lng: null,
     };
     this.mapRef = React.createRef();
   }
@@ -21,42 +26,17 @@ class MapContainer extends Component {
       lat: clickEvent.latLng.lat(),
       lng: clickEvent.latLng.lng(),
     };
-    this.setState({ markers: [...this.state.markers, newMarker] });
-  };
-
-  onSearchBoxMounted = (ref) => {
-    this.searchBox = ref;
-  };
-
-  onPlacesChanged = () => {
-    const places = this.searchBox.getPlaces();
-    const bounds = new this.props.google.maps.LatLngBounds();
-
-    places.forEach((place) => {
-      if (place.geometry && place.geometry.location) {
-        const lat = place.geometry.location.lat();
-        const lng = place.geometry.location.lng();
-
-        this.setState({
-          markers: [
-            ...this.state.markers,
-            {
-              lat: lat,
-              lng: lng,
-            },
-          ],
-        });
-
-        bounds.extend(place.geometry.location);
-      }
+    console.log('New marker coordinates: ', "lat:", newMarker.lat, "lng:", newMarker.lng);
+    this.setState({ 
+      markers: [...this.state.markers, newMarker], 
+      lat: newMarker.lat, 
+      lng: newMarker.lng 
     });
-
-    this.mapRef.current.map.fitBounds(bounds);
   };
 
   render() {
     const { google } = this.props;
-    const { markers, mapMounted } = this.state;
+    const { markers, mapMounted, lat, lng } = this.state;
 
     if (!mapMounted) {
       return null;
@@ -64,16 +44,8 @@ class MapContainer extends Component {
 
     return (
       <div>
-        <input
-          type="text"
-          placeholder="Search places"
-          ref={this.onSearchBoxMounted}
-          style={{ marginTop: '10px', marginBottom: '10px', padding: '5px' }}
-        />
         <Map
-          id="map"
           google={google}
-          style={{ width: '100%', height: 'calc(100% - 50px)' }}
           zoom={10}
           initialCenter={{ lat: 40.7128, lng: -74.0060 }}
           mapContainerClassName="map-container"
@@ -91,11 +63,19 @@ class MapContainer extends Component {
             </Marker>
           ))}
         </Map>
+
+          {lat && lng && (
+            <WalkScore 
+              lat={lat}
+              lng={lng}
+            />
+          )}
+
       </div>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GMAP_KEY,
+  apiKey: "AIzaSyDcuIlFK46ovUX1gU8KvqjqYYVPOrHMbRU"
 })(MapContainer);
