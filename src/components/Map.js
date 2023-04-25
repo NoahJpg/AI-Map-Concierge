@@ -76,6 +76,7 @@ class MapContainer extends Component {
     this.getAddressFromLatLong(newMarker.lat, newMarker.lng);
   };
 
+<<<<<<< HEAD
   onMarkerClick = (index) => {
     const marker = this.state.markers[index];
     this.setState({
@@ -84,6 +85,15 @@ class MapContainer extends Component {
     });
     this.deleteMarker();
   };
+=======
+  getAddressFromLatLong = async (lat, lng) => {
+<<<<<<< HEAD
+    const apiKey = "process.env.REACT_APP_GMAP_KEY"
+=======
+    const apiKey = "AIzaSyDcuIlFK46ovUX1gU8KvqjqYYVPOrHMbRU"
+>>>>>>> fc4f3c0 (successfully generate an address based on coordinates of click)
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
+>>>>>>> 13e79a7 (fix api)
 
   deleteMarker = () => {
     const markers = [...this.state.markers];
@@ -208,7 +218,15 @@ class MapContainer extends Component {
             <WalkScore 
               lat={lat}
               lng={lng}
+<<<<<<< HEAD
               address={address}
+=======
+<<<<<<< HEAD
+              address={encodedAddress}
+=======
+              address={address}
+>>>>>>> fc4f3c0 (successfully generate an address based on coordinates of click)
+>>>>>>> 13e79a7 (fix api)
             />
           )}
 
