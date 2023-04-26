@@ -3,8 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
 import WalkScore from "./WalkScore";
 import Sidebar from './Sidebar';
-import { getGeneratedText } from './ChatGPT';
-
+// import { getGeneratedText } from './ChatGPT';
 
 class MapContainer extends Component {  
   constructor(props) {
@@ -16,6 +15,7 @@ class MapContainer extends Component {
       lng: null,
       address: null,
       activeMarker: null,
+      previousMarker: null,
       showInfoWindow: false,
       selectedPlace: { props: {} },
       isMarkerClicked: false,
@@ -44,12 +44,15 @@ class MapContainer extends Component {
   };
 
   onMarkerClick = (index) => {
-    console.log("Marker Clicked: ", index);
+    if (this.state.previousMarker) {
+      this.state.previousMarker.setMap(null);
+    }
     this.setState({
       isMarkerClicked: true,
       selectedPlace: { props: { index } }
     });
   }
+
 
   getAddressFromLatLong = async (lat, lng) => {
     const apiKey = process.env.REACT_APP_GMAP_KEY

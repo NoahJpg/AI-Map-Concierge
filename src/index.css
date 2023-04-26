@@ -21,38 +21,28 @@ code {
   z-index: 0;
 }
 
-.sidebar {
-  position: relative;
-  background-color: rgba(100, 55, 400);
-  padding-top: 50px;
-  padding-left: 10px;
-  margin-top: 110px;
-  margin-left: 5px;
-  padding-bottom: 50px;
-  margin-bottom: 100%;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 100%;
-  z-index: 1;
-}
 
 .sidebar-wrapper {
   position: relative;
-  background-color: darkblue;
+  background-color: rgb(32, 0, 92);
   color: white;
-  padding-top: 50px;
+  padding-top: 15px;
   padding-left: 10px;
-  margin-top: 110px;
-  margin-left: 5px;
+  margin-top: 100px;
+  margin-left: 3px;
+  margin-right: 3px;
   padding-bottom: 50px;
-  margin-bottom: 100%;
+  margin-bottom: 20px;
   top: 0;
   left: 0;
   width: 300px;
-  height: 100%;
+  height: fit-content;
   z-index: 1;
 }
 
+.title {
+  font-weight: bolder;
+  color: rgb(251, 0, 0);
+}
 
 

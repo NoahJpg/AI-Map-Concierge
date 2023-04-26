@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const generateText = async (prompt) => {
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-  const model = 'text-davinci-002';
+  const model = 'text-davinci-003';
   const maxTokens = 50;
   const n = 1;
   const temperature = 0.5;
@@ -24,7 +24,7 @@ const generateText = async (prompt) => {
 
 const getGeneratedText = async (address, callback) => {
   const prompt = `What place can I tell you about? ${address}`;
-  const response = await fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
+  const response = await fetch("https://api.openai.com/v1/engines/text-davinci-003/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -38,6 +38,7 @@ const getGeneratedText = async (address, callback) => {
     })
   });
   const data = await response.json();
+  console.log("Data:", data);
   const generatedText = data.choices[0].text.trim();
   callback(generatedText);
 };
