@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
 import WalkScore from "./WalkScore";
+import Sidebar from './Sidebar';
 
 
 class MapContainer extends Component {  
@@ -13,6 +14,11 @@ class MapContainer extends Component {
       lat: null,
       lng: null,
       address: null,
+      activeMarker: null,
+      showInfoWindow: false,
+      selectedPlace: { props: {} },
+      isMarkerClicked: false,
+      generatedText: null
     };
     this.mapRef = React.createRef();
   }
@@ -20,6 +26,7 @@ class MapContainer extends Component {
   componentDidMount() {
     this.setState({ mapMounted: true });
   }
+
 
   onMapClick = (mapProps, map, clickEvent) => {
     const newMarker = {
@@ -66,7 +73,7 @@ class MapContainer extends Component {
   console.log("encoded address:", encodedAddress)
 
     return (
-      <div>
+      <div className='map-wrapper'>
         <Map
           google={google}
           zoom={10}
@@ -76,13 +83,21 @@ class MapContainer extends Component {
           ref={this.mapRef}
         >
           {markers.map((marker, index) => (
-            <Marker key={index} position={marker}>
-            <InfoWindow>
-              <div>
-                <h3>This is the marker info window</h3>
-                <p>you cna add any content you want here</p>
-              </div>
-            </InfoWindow>  
+            <Marker 
+              key={index} 
+              position={{lat: marker.lat, lng: marker.lng}} 
+              onClick={() => this.onMarkerClick(index)}
+              index={index}>
+              {this.state.showInfoWindow &&
+                this.state.selectedPlace.props && 
+                this.state.selectedPlace.props.index === index && (
+                <InfoWindow onCloseClick={this.onCloseInfoWindow}>
+                  <div>
+                    <h3>This is the marker info window</h3>
+                    <p>you can add any content you want here</p>
+                  </div>
+                </InfoWindow> 
+              )}             
             </Marker>
           ))}
         </Map>
@@ -95,6 +110,16 @@ class MapContainer extends Component {
             />
           )}
 
+          {this.state.isMarkerClicked && (
+          
+            <Sidebar
+              address={address}
+              lat={lat}
+              lng={lng}
+              getGeneratedText={this.generatedText}
+              generatedText={this.state.generatedText}
+            />
+          )}
       </div>
     );
   }

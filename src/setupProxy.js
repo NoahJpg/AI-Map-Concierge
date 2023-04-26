@@ -10,12 +10,10 @@ module.exports = function(app) {
         '^/score': '/score',
       },
       onProxyReq: (proxyReq, req, res) => {
-        const { lat, lng } = req.query;
+        const { lat, lng, address } = req.query;
         const apiKey = process.env.REACT_APP_WALKSCORE_KEY;
-        proxyReq.path += `?format=json&lat=${lat}&lon=${lng}&wsapikey=${apiKey}`;
-      },
-      headers: {
-        'Access-Control-Allow-Origin': 'https://noahjpg.github.io/Livable',
+        const qs = `?format=json&lat=${lat}&lon=${lng}&address=${address}&wsapikey=${apiKey}`;
+        proxyReq.path += qs;
       }
     })
   );
