@@ -22,7 +22,7 @@ const generateText = async (prompt) => {
   return response.data.choices[0].text;
 }
 
-getGeneratedText = async (address) => {
+const getGeneratedText = async (address, callback) => {
   const prompt = `What place can I tell you about? ${address}`;
   const response = await fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
     method: "POST",
@@ -39,7 +39,7 @@ getGeneratedText = async (address) => {
   });
   const data = await response.json();
   const generatedText = data.choices[0].text.trim();
-  this.setState({ generatedText });
+  callback(generatedText);
 };
 
-export default generateText;
+export { generateText, getGeneratedText };
