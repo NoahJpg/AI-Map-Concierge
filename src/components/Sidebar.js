@@ -13,8 +13,11 @@ const Sidebar = ({ address, lat, lng, generatedText, setGeneratedText }) => {
       <p><span className='title'>Address: </span>{address}</p>
       <p><span className='title'>Latitude: </span>{lat}</p>
       <p><span className='title'>Longitude: </span>{lng}</p>
-      <button onClick={handleGenerateText}>Generate Text</button>
+      <button onClick={handleGenerateText}>Generate Info About This Place</button>
+      <br />
+      <p>Response: </p>
       {generatedText && <p>{generatedText}</p>}
+
     </div>
   );
 };

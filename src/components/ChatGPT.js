@@ -22,9 +22,9 @@ const generateText = async (prompt) => {
   return response.data.choices[0].text;
 }
 
-const getGeneratedText = async (address, callback) => {
+const getGeneratedText = async (address) => {
   const prompt = `What place can I tell you about? ${address}`;
-  const response = await fetch("https://api.openai.com/v1/engines/text-davinci-003/", {
+  const response = await fetch("https://api.openai.com/v1/engines/davinci/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +40,8 @@ const getGeneratedText = async (address, callback) => {
   const data = await response.json();
   console.log("Data:", data);
   const generatedText = data.choices[0].text.trim();
-  callback(generatedText);
+  console.log("Gpt Text", generatedText);
+  return generatedText;
 };
 
 export { generateText, getGeneratedText };

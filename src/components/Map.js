@@ -3,7 +3,8 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
 import WalkScore from "./WalkScore";
 import Sidebar from './Sidebar';
-// import { getGeneratedText } from './ChatGPT';
+import { getGeneratedText } from './ChatGPT';
+
 
 class MapContainer extends Component {  
   constructor(props) {
@@ -53,6 +54,11 @@ class MapContainer extends Component {
     });
   }
 
+  handleGenerateText = async () => {
+    const { address } = this.state;
+    const response = await getGeneratedText(address);
+    this.setState({ generatedText: response });
+  }
 
   getAddressFromLatLong = async (lat, lng) => {
     const apiKey = process.env.REACT_APP_GMAP_KEY
@@ -128,8 +134,8 @@ class MapContainer extends Component {
               address={address}
               lat={lat}
               lng={lng}
-              getGeneratedText={this.generatedText}
               generatedText={this.state.generatedText}
+              setGeneratedText={(text) => this.setState({ generatedText: text })}
             />
           )}
        </div>
