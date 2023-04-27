@@ -28,7 +28,8 @@ const getGeneratedText = async (address) => {
       prompt: prompt,
       max_tokens: 200,
       n: 1,
-      stop: "."
+      stop: ".",
+      echo: false
     }, {
       headers: {
         "Content-Type": "application/json",
