@@ -5,7 +5,6 @@ import WalkScore from "./WalkScore";
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
 
-
 class MapContainer extends Component {  
   constructor(props) {
     super(props);
@@ -34,7 +33,7 @@ class MapContainer extends Component {
       lat: clickEvent.latLng.lat(),
       lng: clickEvent.latLng.lng(),
     };
-    console.log('New marker coordinates: ', "lat:", newMarker.lat, "lng:", newMarker.lng);
+    console.log("lat:", newMarker.lat, "lng:", newMarker.lng);
     this.setState({ 
       markers: [...this.state.markers, newMarker], 
       lat: newMarker.lat, 
@@ -69,9 +68,7 @@ class MapContainer extends Component {
     const data = await response.json();
     if (data.results.length > 0) {
       const address = data.results[0].formatted_address;
-      this.setState({ address }, () => {
-        console.log("Address:", address)
-      });
+      this.setState({ address }, () => {});
     }
   } catch (error) {
     console.error(error);
@@ -81,13 +78,11 @@ class MapContainer extends Component {
   render() {
     const { google } = this.props;
     const { markers, mapMounted, lat, lng, address } = this.state;
+    const encodedAddress = encodeURIComponent(address);
 
     if (!mapMounted) {
-      return null;
+      return "Loading...";
     }
-
-  const encodedAddress = encodeURIComponent(address);
-  console.log("encoded address:", encodedAddress)
 
     return (
       <div className='map-wrapper'>
@@ -126,7 +121,6 @@ class MapContainer extends Component {
               address={encodedAddress}
             />
           )}
-          
           {this.state.isMarkerClicked && (
           
             <Sidebar
