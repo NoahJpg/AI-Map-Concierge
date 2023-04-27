@@ -23,7 +23,7 @@ const generateText = async (prompt) => {
 }
 
 const getGeneratedText = async (address) => {
-  const prompt = `What place can I tell you about? ${address}`;
+  const prompt = `What can you tell me about the place where this house is located: ${address}?`;
   const response = await fetch("https://api.openai.com/v1/engines/davinci/completions", {
     method: "POST",
     headers: {
