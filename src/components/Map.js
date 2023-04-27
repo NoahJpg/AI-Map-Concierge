@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, Autocomplete } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
 import WalkScore from "./WalkScore";
 import Sidebar from './Sidebar';
@@ -19,7 +19,8 @@ class MapContainer extends Component {
       showInfoWindow: false,
       selectedPlace: { props: {} },
       isMarkerClicked: false,
-      generatedText: null
+      generatedText: null,
+      place: null,
     };
     this.mapRef = React.createRef();
   }
@@ -59,6 +60,33 @@ class MapContainer extends Component {
     this.setState({ generatedText: response });
   }
 
+  geocodeAddress = () => {
+    const geocoder = new this.google.maps.Geocoder();
+    const input = document.getElementById("address-input");
+    const autocomplete = new this.google.maps.places.Autocomplete(input);
+  
+    autocomplete.addListener("place_changed", () => {
+      const place = autocomplete.getPlace();
+      if (place.geometry) {
+        const map = this.mapRef.current.map;
+        const marker = new this.google.maps.Marker({
+          map,
+          position: place.geometry.location
+        });
+        map.setCenter(place.geometry.location);
+        this.setState({
+          address: place.formatted_address,
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+          markers: [{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }]
+        });
+      } else {
+        alert('No results found');
+      }
+    });
+  }
+  
+
   getAddressFromLatLong = async (lat, lng) => {
     const apiKey = process.env.REACT_APP_GMAP_KEY
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
@@ -75,6 +103,32 @@ class MapContainer extends Component {
   }
 };
 
+  onPlaceChanged = (autocomplete) => {
+    if (autocomplete) {
+      const place = autocomplete.getPlace();
+      if (place.geometry) {
+        const map = this.mapRef.current.map;
+        const marker = new this.google.maps.Marker({
+          map,
+          position: place.geometry.location
+        });
+        map.setCenter(place.geometry.location);
+        this.setState({
+          address: place.formatted_address,
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+          markers: [{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }],
+          place // update the state with the selected place
+        });
+      } else {
+        console.log('Autocomplete returned place with no geometry.');
+      }
+    } else {
+      console.log('Autocomplete returned null.');
+    }
+  };
+
+
   render() {
     const { google } = this.props;
     const { markers, mapMounted, lat, lng, address } = this.state;
@@ -86,6 +140,27 @@ class MapContainer extends Component {
 
     return (
       <div className='map-wrapper'>
+        {/* <div className='search-bar'>
+          <input
+            id='address-input'
+            type='text'
+            placeholder='Enter address'
+          />
+        </div>
+
+        {google && (
+          <Autocomplete
+            onLoad={this.onLoad}
+            onPlaceChanged={this.onPlaceChanged}
+          >
+            <input
+              id='autocomplete-input'
+              type='text'
+              placeholder='Enter address'
+            />
+          </Autocomplete>
+        )} */}
+
         <Map
           google={google}
           zoom={10}

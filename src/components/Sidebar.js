@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { getGeneratedText } from './ChatGPT';
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-import { Typewriter } from 'react-typewriter-effect';
-
 
 
 const Sidebar = ({ address, lat, lng }) => {
@@ -41,6 +39,10 @@ const Sidebar = ({ address, lat, lng }) => {
       <button className={buttonClassName} onClick={handleToggleDarkMode}>
         {isDarkMode ? '🌝' : '🌚'}
       </button>
+      <br/ ><br/ >
+      <input type="text" id="address-input" placeholder="Enter address" />
+      <button onclick="geocodeAddress()">Find Address</button>
+
       <p><span className='title'>Address: </span>{address}</p>
       <br />
       <p><strong>Wackiness Factor: </strong><em>{temperature}<br />- Your results may vary</em> 🤪<br /><em>- Set to 0 for predicatble results</em> </p>
