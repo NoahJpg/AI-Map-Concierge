@@ -11,6 +11,7 @@ const Sidebar = ({ address, lat, lng }) => {
   const [temperature, setTemperature] = useState(0.5);
   const [isLoading, setIsLoading] = useState(false);
   const [maxTokens, setMaxTokens] = useState(200);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleGenerateText = async () => {
     setIsLoading(true);
@@ -27,12 +28,20 @@ const Sidebar = ({ address, lat, lng }) => {
     setMaxTokens(parseInt(e.target.value));
   };
 
+  const handleToggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+  }
+
+  const wrapperClassName = `sidebar-wrapper${isDarkMode ? ' dark-mode' : ''}`;
+  const buttonClassName = `btn-mode${isDarkMode ? ' light' : ' dark'}`;
+
   return (
-    <div className='sidebar-wrapper'>
-      <h2>Info About This Spot</h2>
+    <div className={wrapperClassName}>
+      <h2 class="title">Info Generator</h2>
+      <button className={buttonClassName} onClick={handleToggleDarkMode}>
+        {isDarkMode ? '🌝' : '🌚'}
+      </button>
       <p><span className='title'>Address: </span>{address}</p>
-      <p><span className='title'>Latitude: </span>{lat}</p>
-      <p><span className='title'>Longitude: </span>{lng}</p>
       <br />
       <p><strong>Wackiness Factor: </strong><em>{temperature}<br />- Your results may vary</em> 🤪<br /><em>- Set to 0 for predicatble results</em> </p>
       <RangeSlider
