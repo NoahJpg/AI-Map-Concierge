@@ -17,7 +17,7 @@ code {
   width: 100%;
   height: 100vh;
   nav-left: auto;
-  position: relative;
+  position: absolute;
   top: 0;
   z-index: 0;
 }
@@ -32,7 +32,7 @@ code {
   border: 1px solid #CCCCCC;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #CCCCCC;
-  width: 300px;
+  width: 310px;
   height: fit-content;
   z-index: 1;
 }

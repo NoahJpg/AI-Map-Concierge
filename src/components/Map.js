@@ -114,13 +114,13 @@ class MapContainer extends Component {
           ))}
         </Map>
 
-          {lat && lng && (
+          {/* {lat && lng && (
             <WalkScore 
               lat={lat}
               lng={lng}
               address={encodedAddress}
             />
-          )}
+          )} */}
           {this.state.isMarkerClicked && (
           
             <Sidebar
