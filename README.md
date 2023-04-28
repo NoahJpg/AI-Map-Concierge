@@ -1,4 +1,4 @@
-<h1 align="center">Livable: Find Your Ideal Neighborhood</h1>
+<h1 align="center">AI Map Concierge</h1>
   <p align="center">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
     <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" />
@@ -18,7 +18,7 @@
 
 
 ## Description
-#### _A web app that lets you find your ideal neighborhood._
+#### _A web app that integrates AI on a Map to help you find  your way around._
 
 
 
@@ -26,12 +26,9 @@
 
 * _React_
 * _JavaScript_
-* _MongoDB_
 * _NPM_
-* _NoSQL_
-* _WalkScore API_
-* _Zillow API_
-* _City-Data API_
+* _OpenAI API_
+* _Google Maps API_
 
 
 ## Setup and Installation Requirements
@@ -44,9 +41,11 @@
 
 ## License
 
-_If you have any issues or have questions, ideas or concerns please contact me at [noahatkinson1.1@gmail.com](mailto:noahatkinson1.1@gmail.com)_
+_If you have any issues or have questions, ideas or concerns please [contact me](mailto:noahatkinson1.1@gmail.com)_
 
-MIT License
+<details>
+
+<summary>MIT License</summary>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -65,5 +64,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
+</details>
+<br />
 Copyright (c) _2023_ _Noah Atkinson_
