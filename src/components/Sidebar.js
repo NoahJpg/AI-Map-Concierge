@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { getGeneratedText } from './ChatGPT';
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-import {geocodeAddress} from "./Map"
-
+import CustomQuestion from './CustomQuestion';
+import PresetQuestion from './PresetQuestion';
 
 const Sidebar = ({ address, lat, lng }) => {
-  const [userQuestion, setUserQuestion] = useState("");
   const [generatedText, setGeneratedText] = useState('');
   const [temperature, setTemperature] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,23 +13,10 @@ const Sidebar = ({ address, lat, lng }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
-
-  const handleUserQuestionSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const userQuestion = e.target.elements.userQuestion
-    const response = await getGeneratedText(address, userQuestion, maxTokens, temperature);
-    setGeneratedText(response);
-    setIsLoading(false);
-  }
-
-  const handleUserQuestionChange = (e) => {
-      setUserQuestion(e.target.value);
-    };
   
   const handleGenerateText = async () => {
     setIsLoading(true);
-    const response = await getGeneratedText(address, userQuestion, maxTokens, temperature);
+    const response = await getGeneratedText(address, maxTokens, temperature);
     setGeneratedText(response);
     setIsLoading(false);
   };
@@ -65,21 +51,19 @@ const Sidebar = ({ address, lat, lng }) => {
 
 
       <p><span className='title'>Address: </span>{address}</p>
-      <button onClick={handleGenerateText}>What is there to do around here?</button>
+      <PresetQuestion
+        buttonText='What is there to do around here?'
+        prompt={`Pretend you are a friend who lives in this city: ${address} and reccomend things to do around the neighborhood`}
+        maxTokens={maxTokens}
+        temperature={temperature}
+      />
+      <PresetQuestion
+        buttonText='What is the weather like in this area?'
+        prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area.`}
+        maxTokens={maxTokens}
+        temperature={temperature}
+      />
       <br /><br />
-      {/* <form onSubmit={handleUserQuestionSubmit}>
-        <input 
-          type='text' 
-          name='user-question'
-          placeholder='Ask a question *BETA*' 
-          onChange={handleUserQuestionChange} 
-          value={userQuestion} />
-        <button type='submit'>send</button>
-      </form> */}
-
-      {/* <br /><br /><br /> */}
- 
-      <p>Reply: </p>
 
       {isLoading ? (
         <p>Loading...</p>

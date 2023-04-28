@@ -26,8 +26,8 @@ const generateText = async (prompt) => {
   }
 }
 
-const getGeneratedText = async (address, userQuestion) => {
-  const prompt = `Pretend you are a friend who lives in this city ${address} and reccomend things to do around the neighborhood`;
+const getGeneratedText = async (address) => {
+  const prompt = `Pretend you are a friend who lives in this city ${address} and recommend things to do around the neighborhood`;
 
   try {
     const response = await axios.post(`${baseURL}/engines/${engine}/completions`, {
