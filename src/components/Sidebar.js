@@ -19,7 +19,6 @@ const Sidebar = ({ address, lat, lng }) => {
     e.preventDefault();
     setIsLoading(true);
     const userQuestion = e.target.elements.userQuestion
-    console.log("e.target:", e.target.elements.userQuestion)
     const response = await getGeneratedText(address, userQuestion, maxTokens, temperature);
     setGeneratedText(response);
     setIsLoading(false);
