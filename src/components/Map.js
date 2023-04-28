@@ -20,12 +20,16 @@ class MapContainer extends Component {
       isMarkerClicked: false,
       generatedText: null,
       place: null,
+      showSplash: true,
     };
     this.mapRef = React.createRef();
   }
 
   componentDidMount() {
     this.setState({ mapMounted: true });
+    setTimeout(() => {
+      this.setState({ showSplash: false });
+    }, 2000); // show splash screen for 2 seconds
   }
 
   onMapClick = (mapProps, map, clickEvent) => {
@@ -102,8 +106,19 @@ class MapContainer extends Component {
 
   render() {
     const { google } = this.props;
-    const { markers, mapMounted, lat, lng, address } = this.state;
+    const { markers, mapMounted, lat, lng, address, showSplash } = this.state;
     // const encodedAddress = encodeURIComponent(address);
+
+    if (showSplash) {
+
+      return (
+        <div className="splash-screen">
+          <img src="logo.png" alt="Logo" />
+          <h1>Welcome to my app!</h1>
+          <p>This app allows you to get information about any location on the map.</p>
+        </div>
+      );
+    }
 
     if (!mapMounted) {
       return "Loading...";
