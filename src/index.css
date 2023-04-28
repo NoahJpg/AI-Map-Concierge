@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F7F7F7;
+  background-color: #ADD8E6;
+  background-image: url("img/old-map.jpg");
+  background-size: cover;
 }
 
 code {
