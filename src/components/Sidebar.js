@@ -2,18 +2,35 @@ import React, { useState } from 'react';
 import { getGeneratedText } from './ChatGPT';
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+import {geocodeAddress} from "./Map"
 
 
 const Sidebar = ({ address, lat, lng }) => {
+  const [userQuestion, setUserQuestion] = useState("");
   const [generatedText, setGeneratedText] = useState('');
-  const [temperature, setTemperature] = useState(0.5);
+  const [temperature, setTemperature] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [maxTokens, setMaxTokens] = useState(200);
+  const [maxTokens, setMaxTokens] = useState(500);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  
 
+  const handleUserQuestionSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const userQuestion = e.target.elements.userQuestion
+    console.log("e.target:", e.target.elements.userQuestion)
+    const response = await getGeneratedText(address, userQuestion, maxTokens, temperature);
+    setGeneratedText(response);
+    setIsLoading(false);
+  }
+
+  const handleUserQuestionChange = (e) => {
+      setUserQuestion(e.target.value);
+    };
+  
   const handleGenerateText = async () => {
     setIsLoading(true);
-    const response = await getGeneratedText(address, maxTokens, temperature);
+    const response = await getGeneratedText(address, userQuestion, maxTokens, temperature);
     setGeneratedText(response);
     setIsLoading(false);
   };
@@ -40,12 +57,18 @@ const Sidebar = ({ address, lat, lng }) => {
         {isDarkMode ? '🌝' : '🌚'}
       </button>
       <br/ ><br/ >
-      <input type="text" id="address-input" placeholder="Enter address" />
-      <button onclick="geocodeAddress()">Find Address</button>
-
+      <form onSubmit={handleUserQuestionSubmit}>
+        <input 
+          type='text' 
+          name='user-question'
+          placeholder='Ask a question' 
+          onChange={handleUserQuestionChange} 
+          value={userQuestion} />
+        <button type='submit'>Ask</button>
+      </form>
       <p><span className='title'>Address: </span>{address}</p>
       <br />
-      <p><strong>Wackiness Factor: </strong><em>{temperature}<br />- Your results may vary</em> 🤪<br /><em>- Set to 0 for predicatble results</em> </p>
+      <p><strong>Wackiness Factor: </strong><em>{temperature}<br />- Your results may vary</em><br /><em>- Set to 0 for predicatble results</em> </p>
       <RangeSlider
         value={temperature}
         min={0}
@@ -54,11 +77,11 @@ const Sidebar = ({ address, lat, lng }) => {
         onChange={handleTemperatureChange}
         />
         <br />
-        <p><strong>Max Response Length: </strong><em>{maxTokens} characters<br />- Impacts load time</em></p>
+        <p><strong>Max Response Length: </strong><em>{maxTokens}%<br />- Impacts load time</em></p>
       <RangeSlider
         value={maxTokens}
-        min={20}
-        max={500}
+        min={10}
+        max={100}
         step={1}
         onChange={handleMaxTokensChange}
       />

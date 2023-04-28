@@ -60,31 +60,31 @@ class MapContainer extends Component {
     this.setState({ generatedText: response });
   }
 
-  geocodeAddress = () => {
-    const geocoder = new this.google.maps.Geocoder();
-    const input = document.getElementById("address-input");
-    const autocomplete = new this.google.maps.places.Autocomplete(input);
+  // geocodeAddress = (address) => {
+  //   const geocoder = new this.google.maps.Geocoder();
+  //   const input = document.getElementById("address-input");
+  //   const autocomplete = new this.google.maps.places.Autocomplete(input);
   
-    autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
-      if (place.geometry) {
-        const map = this.mapRef.current.map;
-        const marker = new this.google.maps.Marker({
-          map,
-          position: place.geometry.location
-        });
-        map.setCenter(place.geometry.location);
-        this.setState({
-          address: place.formatted_address,
-          lat: place.geometry.location.lat(),
-          lng: place.geometry.location.lng(),
-          markers: [{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }]
-        });
-      } else {
-        alert('No results found');
-      }
-    });
-  }
+  //   autocomplete.addListener("place_changed", () => {
+  //     const place = autocomplete.getPlace();
+  //     if (place.geometry) {
+  //       const map = this.mapRef.current.map;
+  //       const marker = new this.google.maps.Marker({
+  //         map,
+  //         position: place.geometry.location
+  //       });
+  //       map.setCenter(place.geometry.location);
+  //       this.setState({
+  //         address: place.formatted_address,
+  //         lat: place.geometry.location.lat(),
+  //         lng: place.geometry.location.lng(),
+  //         markers: [{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }]
+  //       });
+  //     } else {
+  //       alert('No results found');
+  //     }
+  //   });
+  // }
   
 
   getAddressFromLatLong = async (lat, lng) => {
@@ -215,3 +215,5 @@ class MapContainer extends Component {
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GMAP_KEY
 })(MapContainer);
+
+// export { geocodeAddress };

@@ -1,45 +1,50 @@
 import axios from 'axios';
 
-const generateText = async (prompt) => {
-  const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-  const model = 'text-davinci-003';
-  const maxTokens = 0;
-  const n = 1;
-  const temperature = 0.5;
-  
-  const response = await axios.post('https://api.openai.com/v1/engines/' + model + '/completions', {
-    prompt: prompt,
-    max_tokens: maxTokens,
-    n: n,
-    temperature: temperature,
-  }, {
-    headers: {
-      'Authorization': 'Bearer ' + apiKey,
-      'Content-Type': 'application/json'
-    }
-  });
+const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+const baseURL = 'https://api.openai.com/v1';
+const engine = 'text-davinci-002';
+const maxTokens = 100;
+const n = 2;
+const temperature = 0.5;
 
-  return response.data.choices[0].text;
+axios.defaults.headers.common['Authorization'] = `Bearer ${apiKey}`;
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+const generateText = async (prompt) => {
+  try {
+    const response = await axios.post(`${baseURL}/engines/${engine}/completions`, {
+      prompt: prompt,
+      max_tokens: maxTokens,
+      n: n,
+      temperature: temperature,
+    });
+
+    return response.data.choices[0].text;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error generating text');
+  }
 }
 
-const getGeneratedText = async (address) => {
-  const prompt = `What is the walk score of this neighborhood ${address}?`;
-  const response = await axios.post("https://api.openai.com/v1/engines/davinci/completions", {
+const getGeneratedText = async (address, userQuestion) => {
+  const prompt = `Pretend you are a friend who lives in this city ${address} and reccomend things to do around the neighborhood`;
+
+  try {
+    const response = await axios.post(`${baseURL}/engines/${engine}/completions`, {
       prompt: prompt,
-      max_tokens: 200,
-      n: 1,
-      stop: ".",
+      max_tokens: maxTokens,
+      n: n,
+      stop: '.',
       echo: false
-    }, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-      }
     });
-  const data = response.data;
-  const generatedText = data.choices[0].text.trim();
-  console.log("Gpt Text", generatedText);
-  return generatedText;
+
+    const generatedText = response.data.choices[0].text.trim();
+    console.log("Gpt Text", generatedText);
+    return generatedText;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error generating text');
+  }
 };
 
 export { generateText, getGeneratedText };
