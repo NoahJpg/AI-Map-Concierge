@@ -36,7 +36,7 @@ const Sidebar = ({ address, lat, lng }) => {
 
   return (
     <div className={wrapperClassName}>
-      <h2 className="title">Info Generator</h2>
+      <h2 className="title">How can I help you?</h2>
       <button className={buttonClassName} onClick={handleToggleDarkMode}>
         {isDarkMode ? '🌝' : '🌚'}
       </button>

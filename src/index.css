@@ -146,6 +146,9 @@ button:hover {
   margin: 0;
 }
 
+.splash-p-tags {
+  text-align: left;
+}
 .splash-screen.fade-out {
   animation: fadeOut 1s ease forwards;
 }
