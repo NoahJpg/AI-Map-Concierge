@@ -1,37 +1,49 @@
-<h1 align="center">AI Map Concierge</h1>
+<h1 align="center">🤖 AI Map Concierge 🗺️</h1>
   <p align="center">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
     <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" />
   </p>
   
   <p align="center">
-    <a href="#description">Description</a> •
-    <a href="#technologies-used">Technologies Used</a> •
-    <a href="#setup-and-installation-requirements">Setup and Installation Requirements</a> •
-    <a href="#known-bugs">Known Bugs</a> •
-    <a href="#license">License</a>
-    
+    <a href="#description">📝 Description 📚</a>
+    <br>
+    <a href="#technologies-used">💽 Technologies Used 💾</a>
+    <br>
+    <a href="#setup-and-installation-requirements">🧰 Setup and Installation Requirements 🔨</a>
+    <br>
+    <a href="#known-bugs">🪲🐞 Known Bugs 🐛🐜</a>
+    <br>
+    <a href="#license">🪪 License 🪪</a>
   </p>
 
+  <p align="center">
+  <img src="src/img/Map-screenshot.png" alt="film fridge" width="400" />
+</p>
 
 #### By Noah Atkinson
 
 
 ## Description
-#### _A web app that integrates AI on a Map to help you find  your way around._
+#### _A web app that integrates Chat AI on a Map to help you learn about wherever you click._
 
+## Run It Here
 
+  [Live project]("https://livable-app.vercel.app/")
 
 ## Technologies Used
 
 * _React_
-* _JavaScript_
-* _NPM_
-* _OpenAI API_
-* _Google Maps API_
-
+* _Bootstrap_
+* _React-Google-Maps-API_
+* _Axios_
+* _Express_
+* _Node-Fetch_
+* _Open AI_
+* _Eslint_
 
 ## Setup and Installation Requirements
+
+  [Live project here]("https://livable-app.vercel.app/")
 
 * _TBD_
 
@@ -66,4 +78,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </details>
 <br />
-Copyright (c) _2023_ _Noah Atkinson_
+Copyright (c) 2023 Noah Atkinson
