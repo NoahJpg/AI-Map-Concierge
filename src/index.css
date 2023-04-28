@@ -43,10 +43,30 @@ code {
   margin-top: 0;
 }
 
+button {
+  background-image: linear-gradient(to bottom, #f7f7f7, #ccc);
+  border: 1px solid #ccc;
+  font-family: 'Helvetica Neue', sans-serif;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+/* dark mode */
+
 .sidebar-wrapper.dark-mode {
   background-color: #222;
   color: #fff;
 }
+.sidebar-wrapper.dark-mode .dropdown-content {
+  background-color: #222;
+}
+
 
 .btn-mode.light {
   color: #fff;
@@ -56,4 +76,58 @@ code {
 .btn-mode.dark {
   color: #222;
   background-color: #fff;
+}
+
+/* hide the sliders */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  width: 250px;
+  height: fit-content;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #444444;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.dropdown-active {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #444444;
+  background-color: whitesmoke;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+  color: #444444;
+}
+
+.dropdown-item.active {
+  background-color: #4CAF50;
+  color: white;
 }

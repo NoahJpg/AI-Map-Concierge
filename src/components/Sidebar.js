@@ -10,9 +10,10 @@ const Sidebar = ({ address, lat, lng }) => {
   const [generatedText, setGeneratedText] = useState('');
   const [temperature, setTemperature] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [maxTokens, setMaxTokens] = useState(500);
+  const [maxTokens, setMaxTokens] = useState(200);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  
+  const [showSettings, setShowSettings] = useState(false);
+
 
   const handleUserQuestionSubmit = async (e) => {
     e.preventDefault();
@@ -47,8 +48,13 @@ const Sidebar = ({ address, lat, lng }) => {
     setIsDarkMode(!isDarkMode)
   }
 
+  const handleToggleSettings = () => {
+    setShowSettings(!showSettings);
+  }
+
   const wrapperClassName = `sidebar-wrapper${isDarkMode ? ' dark-mode' : ''}`;
   const buttonClassName = `btn-mode${isDarkMode ? ' light' : ' dark'}`;
+  
 
   return (
     <div className={wrapperClassName}>
@@ -57,6 +63,11 @@ const Sidebar = ({ address, lat, lng }) => {
         {isDarkMode ? '🌝' : '🌚'}
       </button>
       <br/ ><br/ >
+
+
+      <p><span className='title'>Address: </span>{address}</p>
+      <button onClick={handleGenerateText}>What is there to do around here?</button>
+      <br /><br />
       <form onSubmit={handleUserQuestionSubmit}>
         <input 
           type='text' 
@@ -64,36 +75,52 @@ const Sidebar = ({ address, lat, lng }) => {
           placeholder='Ask a question' 
           onChange={handleUserQuestionChange} 
           value={userQuestion} />
-        <button type='submit'>Ask</button>
+        <button type='submit'>submit</button>
       </form>
-      <p><span className='title'>Address: </span>{address}</p>
-      <br />
-      <p><strong>Wackiness Factor: </strong><em>{temperature}<br />- Your results may vary</em><br /><em>- Set to 0 for predicatble results</em> </p>
-      <RangeSlider
-        value={temperature}
-        min={0}
-        max={5}
-        step={.1}
-        onChange={handleTemperatureChange}
-        />
-        <br />
-        <p><strong>Max Response Length: </strong><em>{maxTokens}%<br />- Impacts load time</em></p>
-      <RangeSlider
-        value={maxTokens}
-        min={10}
-        max={100}
-        step={1}
-        onChange={handleMaxTokensChange}
-      />
-      <br />
-      <button onClick={handleGenerateText}>What can you tell me about this place?</button>
+
+      <br /><br /><br />
+ 
       <p>Response: </p>
+
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         <p>{generatedText}</p>
       )}
+
+      <br /><br />
+      <div className="dropdown">
+        <button 
+          className={showSettings ? "dropdown-active" : "dropdown-item"}
+          onClick={handleToggleSettings}>
+          Advanced Settings
+        </button>
+        <div className="dropdown-content">
+          <div>
+            <p><b>Predictable Factor:</b> <em>{temperature}</em></p>
+            <RangeSlider
+              value={temperature}
+              min={0}
+              max={5}
+              step={.1}
+              onChange={handleTemperatureChange}
+            />
+          </div>
+          <div>
+            <p><strong>Max Response Length: </strong><em>{maxTokens}%</em></p>
+            <RangeSlider
+              value={maxTokens}
+              min={10}
+              max={200}
+              step={1}
+              onChange={handleMaxTokensChange}
+            />
+          </div>
+        </div>
+      </div>
     </div>
+
+    
   );
 };
 
