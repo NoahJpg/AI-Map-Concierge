@@ -1,4 +1,7 @@
 <h1 align="center">🤖 AI Map Concierge 🗺️</h1>
+  <p align="center">
+    <img src="src/img/Map-screenshot-2.png" alt="map-screenshot" width="400" />
+  </p>
 <h3 align="center">
   🎨 By: Noah Atkinson 
 </h3>
@@ -21,11 +24,6 @@
     <br>
     <a href="#license">🪪 License 🪪</a>
   </p>
-
-  <p align="center">
-  <img src="src/img/Map-screenshot.png" alt="film fridge" width="400" />
-</p>
-
 
 
 ## Description
