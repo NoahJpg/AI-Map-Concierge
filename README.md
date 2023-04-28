@@ -9,8 +9,8 @@
   </p>
   
   <p align="center">
-   <a href="#run-it-here">🏃 Run the App 💻</a>
-    <br>
+   <a href="https://livable-app.vercel.app/">🏃 Run the App 💻</a>
+    <br><br>
     <a href="#description">📝 Description 📚</a>
     <br>
     <a href="#technologies-used">💽 Technologies Used 💾</a>
