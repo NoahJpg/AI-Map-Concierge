@@ -52,7 +52,7 @@
 
 ## Setup and Installation Requirements
 
-  [Live project here]("https://livable-app.vercel.app/")
+  [Live project here](https://livable-app.vercel.app/)
 
 * _TBD_
 
