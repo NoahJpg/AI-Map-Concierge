@@ -1,10 +1,16 @@
 <h1 align="center">🤖 AI Map Concierge 🗺️</h1>
+<h3 align="center">
+  🎨 By: Noah Atkinson 
+</h3>
+
   <p align="center">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
     <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" />
   </p>
   
   <p align="center">
+   <a href="#run-it-here">🏃 Run the App 💻</a>
+    <br>
     <a href="#description">📝 Description 📚</a>
     <br>
     <a href="#technologies-used">💽 Technologies Used 💾</a>
@@ -20,7 +26,6 @@
   <img src="src/img/Map-screenshot.png" alt="film fridge" width="400" />
 </p>
 
-#### By Noah Atkinson
 
 
 ## Description
@@ -28,7 +33,7 @@
 
 ## Run It Here
 
-  [Live project]("https://livable-app.vercel.app/")
+  [Live project](https://livable-app.vercel.app/)
 
 ## Technologies Used
 
@@ -53,7 +58,7 @@
 
 ## License
 
-_If you have any issues or have questions, ideas or concerns please [contact me](mailto:noahatkinson1.1@gmail.com)_
+_If you have any issues or have questions, ideas, or concerns please [contact me](mailto:noahatkinson1.1@gmail.com)_
 
 <details>
 
