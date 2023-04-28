@@ -67,19 +67,19 @@ const Sidebar = ({ address, lat, lng }) => {
       <p><span className='title'>Address: </span>{address}</p>
       <button onClick={handleGenerateText}>What is there to do around here?</button>
       <br /><br />
-      <form onSubmit={handleUserQuestionSubmit}>
+      {/* <form onSubmit={handleUserQuestionSubmit}>
         <input 
           type='text' 
           name='user-question'
-          placeholder='Ask a question' 
+          placeholder='Ask a question *BETA*' 
           onChange={handleUserQuestionChange} 
           value={userQuestion} />
-        <button type='submit'>submit</button>
-      </form>
+        <button type='submit'>send</button>
+      </form> */}
 
-      <br /><br /><br />
+      {/* <br /><br /><br /> */}
  
-      <p>Response: </p>
+      <p>Reply: </p>
 
       {isLoading ? (
         <p>Loading...</p>
@@ -96,21 +96,21 @@ const Sidebar = ({ address, lat, lng }) => {
         </button>
         <div className="dropdown-content">
           <div>
-            <p><b>Predictable Factor:</b> <em>{temperature}</em></p>
+            <p><b>Unpredictable Factor:</b> <em>{temperature}</em></p>
             <RangeSlider
               value={temperature}
               min={0}
-              max={5}
+              max={10}
               step={.1}
               onChange={handleTemperatureChange}
             />
           </div>
           <div>
-            <p><strong>Max Response Length: </strong><em>{maxTokens}%</em></p>
+            <p><strong>Max Response Length: </strong><em><br />{maxTokens} tokens</em></p>
             <RangeSlider
               value={maxTokens}
               min={10}
-              max={200}
+              max={300}
               step={1}
               onChange={handleMaxTokensChange}
             />
