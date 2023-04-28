@@ -121,7 +121,8 @@ class MapContainer extends Component {
     if (showSplash) {
       return (
         <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
-          <img src="logo.png" alt="Logo" />
+          <img src="../src/Logos/svg/logo-black.svg" alt="map logo" />
+
           <h1>Welcome to my app!</h1>
           <p>This app allows you to get information about any location on the map.</p>
           <button onClick={this.handleClick}>🗺️ Get Started 🗺️</button>
