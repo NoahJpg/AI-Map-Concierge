@@ -13,13 +13,6 @@ const Sidebar = ({ address, lat, lng }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
-  
-  // const handleGenerateText = async () => {
-  //   setIsLoading(true);
-  //   const response = await getGeneratedText(address, maxTokens, temperature);
-  //   setGeneratedText(response);
-  //   setIsLoading(false);
-  // };
 
   const handleTemperatureChange = (e) => {
     setTemperature(parseFloat(e.target.value));
