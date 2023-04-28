@@ -1,6 +1,12 @@
 <h1 align="center">🤖 AI Map Concierge 🗺️</h1>
   <p align="center">
-    <img src="src/img/Map-Screenshot-2.png" alt="map-screenshot" width="400" />
+    <div style="text-align:center;">
+    <img src="src/img/Map-Screenshot-2.png" 
+         alt="map-screenshot" 
+         style="display:inline-block; margin:0 auto; max-width:100%; width:400px;"
+    />
+</div>
+
   </p>
 <h3 align="center">
   🎨 By: Noah Atkinson 
