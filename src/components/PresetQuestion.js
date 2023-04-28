@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { generateText, generatedText } from "./ChatGPT";
+import { generateText } from "./ChatGPT";
 
 const PresetQuestion = ({ buttonText, prompt, maxTokens, temperature }) => {
   const [userInput, setUserInput] = useState("");

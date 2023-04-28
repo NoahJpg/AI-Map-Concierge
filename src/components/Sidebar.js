@@ -14,12 +14,12 @@ const Sidebar = ({ address, lat, lng }) => {
   const [showSettings, setShowSettings] = useState(false);
 
   
-  const handleGenerateText = async () => {
-    setIsLoading(true);
-    const response = await getGeneratedText(address, maxTokens, temperature);
-    setGeneratedText(response);
-    setIsLoading(false);
-  };
+  // const handleGenerateText = async () => {
+  //   setIsLoading(true);
+  //   const response = await getGeneratedText(address, maxTokens, temperature);
+  //   setGeneratedText(response);
+  //   setIsLoading(false);
+  // };
 
   const handleTemperatureChange = (e) => {
     setTemperature(parseFloat(e.target.value));
@@ -47,31 +47,7 @@ const Sidebar = ({ address, lat, lng }) => {
       <button className={buttonClassName} onClick={handleToggleDarkMode}>
         {isDarkMode ? '🌝' : '🌚'}
       </button>
-      <br/ ><br/ >
-
-
-      <p><span className='title'>Address: </span>{address}</p>
-      <PresetQuestion
-        buttonText='What is there to do around here?'
-        prompt={`Pretend you are a friend who lives in this city: ${address} and reccomend things to do around the neighborhood`}
-        maxTokens={maxTokens}
-        temperature={temperature}
-      />
-      <PresetQuestion
-        buttonText='What is the weather like in this area?'
-        prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area.`}
-        maxTokens={maxTokens}
-        temperature={temperature}
-      />
-      <br /><br />
-
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <p>{generatedText}</p>
-      )}
-
-      <br /><br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
       <div className="dropdown">
         <button 
           className={showSettings ? "dropdown-active" : "dropdown-item"}
@@ -101,6 +77,49 @@ const Sidebar = ({ address, lat, lng }) => {
           </div>
         </div>
       </div>
+
+      <br/ ><br/ >
+
+      <p><span className='title'>Address: </span>{address}</p>
+
+      <PresetQuestion
+        buttonText='What is there to do here?'
+        prompt={`Pretend you are a friend who lives in this city: ${address} and reccomend things to do around the neighborhood`}
+        maxTokens={maxTokens}
+        temperature={temperature}
+      />
+      <PresetQuestion
+        buttonText='What is the weather like in this area?'
+        prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area.`}
+        maxTokens={maxTokens}
+        temperature={temperature}
+      />
+      <PresetQuestion
+        buttonText='What is the Walk Score®?'
+        prompt={`Pretend you are a friend who lives in this city: ${address} and tell them the Walk Score and explain what the score means. Then tell them the Transit Score, and Bike Score.`}
+        maxTokens={maxTokens}
+        temperature={temperature}
+      />
+      <PresetQuestion
+        buttonText='What is the Average Home Price?'
+        prompt={`Pretend you are a real estate agent who knows all about the  neighborhood where this is located: ${address} and tell them the average home price of the neighborhood as of the year the data comes from.`}
+        maxTokens={maxTokens}
+        temperature={temperature}
+      />
+      <CustomQuestion 
+        prompt={address}
+      />
+
+      <br /><br />
+
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <p>{generatedText}</p>
+      )}
+
+      <br /><br />
+     
     </div>
 
     

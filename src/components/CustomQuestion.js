@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { generateText, generatedText, setIsLoading, IsLoading } from "./ChatGPT";
+import { generateText } from "./ChatGPT";
 
-const CustomQuestion = ({ buttonText, prompt, maxTokens, temperature }) => {
+const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [generatedText, setGeneratedText] = useState('');
@@ -9,13 +9,15 @@ const CustomQuestion = ({ buttonText, prompt, maxTokens, temperature }) => {
   const handleUserInputSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const response = await generateText(`${prompt}${userInput}`, maxTokens, temperature);
+    const response = await generateText(`${prompt}${userInput}?`, maxTokens, temperature);
     setGeneratedText(response);
     setIsLoading(false);
   }
 
   const handleUserInputChange = (e) => {
+      setIsLoading(true);
       setUserInput(e.target.value);
+      setIsLoading(false);
     };
 
     return (
@@ -25,9 +27,10 @@ const CustomQuestion = ({ buttonText, prompt, maxTokens, temperature }) => {
         <form onSubmit={handleUserInputSubmit}>
           <input
             type="text"
-            placeholder="ask a question"
+            placeholder="ask a custom question"
             onChange={handleUserInputChange}
             value={userInput} 
+            required
           /> 
           &nbsp;&nbsp;
           <button onClick={handleUserInputSubmit}>submit</button>
