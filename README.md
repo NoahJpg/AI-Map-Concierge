@@ -1,6 +1,6 @@
 <h1 align="center">🤖 AI Map Concierge 🗺️</h1>
   <p align="center">
-    <img src="src/img/Map-screenshot-2.png" alt="map-screenshot" width="400" />
+    <img src="src/img/Map-Screenshot-2.png" alt="map-screenshot" width="400" />
   </p>
 <h3 align="center">
   🎨 By: Noah Atkinson 
