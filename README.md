@@ -3,7 +3,7 @@
     <div style="text-align:center;">
     <img src="src/img/Map-Screenshot-2.png" 
          alt="map-screenshot" 
-         style="display:inline-block; margin:0 auto; max-width:100%; width:400px; text-align: center;"
+         style="display:inline-block; margin:0 auto; max-width:100%; width:max; height: auto; text-align: center;"
     />
 </div>
 
