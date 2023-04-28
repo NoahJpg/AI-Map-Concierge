@@ -3,6 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
+import { CSSTransition } from 'react-transition-group'
 
 class MapContainer extends Component {  
   constructor(props) {
@@ -21,16 +22,24 @@ class MapContainer extends Component {
       generatedText: null,
       place: null,
       showSplash: true,
+      fadeOut: false,
     };
     this.mapRef = React.createRef();
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ mapMounted: true });
-    setTimeout(() => {
-      this.setState({ showSplash: false });
-    }, 2000); // show splash screen for 2 seconds
+    this.setState({ mapMounted: true})
+    this.setState({ showSplash: true });
+    // Wait for 1 second before hiding the splash screen
   }
+
+  handleClick = () => {
+    this.setState({ fadeOut: true });
+    this.setState({showSplash: false})
+  }
+
 
   onMapClick = (mapProps, map, clickEvent) => {
     const newMarker = {
@@ -106,16 +115,16 @@ class MapContainer extends Component {
 
   render() {
     const { google } = this.props;
-    const { markers, mapMounted, lat, lng, address, showSplash } = this.state;
+    const { markers, mapMounted, lat, lng, address, showSplash, fadeOut } = this.state;
     // const encodedAddress = encodeURIComponent(address);
 
     if (showSplash) {
-
       return (
-        <div className="splash-screen">
+        <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
           <img src="logo.png" alt="Logo" />
           <h1>Welcome to my app!</h1>
           <p>This app allows you to get information about any location on the map.</p>
+          <button onClick={this.handleClick}>🗺️ Get Started 🗺️</button>
         </div>
       );
     }
@@ -128,7 +137,7 @@ class MapContainer extends Component {
       <div className='map-wrapper'>
         <Map
           google={google}
-          zoom={4}
+          zoom={5}
           initialCenter={{ lat: 37.0902, lng: -95.7129 }}
           mapContainerClassName="map-container"
           onClick={this.onMapClick}
