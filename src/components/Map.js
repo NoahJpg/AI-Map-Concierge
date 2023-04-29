@@ -123,17 +123,16 @@ class MapContainer extends Component {
         <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
           <img src="../src/Logos/svg/logo-black.svg" alt="map logo" />
 
-          <h1>Welcome to the AI Map Concierge!</h1>
+          <h1>Welcome to the AI Map Concierge! 🗺️ </h1>
           <h3>This app allows you to AI generate\ information about any location on the map.</h3>
           <div className='splash-p-tags'>
             <p> 1. Click on the map to add a marker</p>
             <p> 2. Click on the marker to open the sidebar</p>
             <p> 3. Choose a button to generate a response!</p>
-            <button onClick={this.handleClick}>🗺️ Get Started 🗺️</button>
+            <button onClick={this.handleClick} className='splash-screen-button'>🗺️ Get Started 🗺️</button>
             <br />
             <p> - You can also enter your own question and see what it has to say</p>
             <p> - Mess around with the advanced settings to see what kind of results you can get!</p>
-            <br />
             <p> <em>* Results may be inaccurate, offensive, or harmful. </em></p>
             </div>
         </div>
