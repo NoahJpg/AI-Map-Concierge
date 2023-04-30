@@ -111,7 +111,6 @@ class MapContainer extends Component {
     }
   };
 
-
   render() {
     const { google } = this.props;
     const { markers, mapMounted, lat, lng, address, showSplash, fadeOut, showInfoWindow } = this.state;
@@ -121,7 +120,8 @@ class MapContainer extends Component {
       return (
         <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
           {/* <img src="/src/img/logo-black.png" alt="map logo" /> */}
-          <h1>Welcome to the AI Map Concierge! 🗺️ </h1>
+          <h1>Welcome to the AI Map Concierge! 🗺️ 
+            *UNDER MAINTENCE*</h1>
           <h3>This app allows you to AI generate information about any location on the map.</h3>
           <div className='splash-p-tags'>
             <p> 1. Click on the map to add a marker</p>
