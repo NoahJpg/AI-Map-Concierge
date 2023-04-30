@@ -3,7 +3,6 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
-import { CSSTransition } from 'react-transition-group'
 
 class MapContainer extends Component {  
   constructor(props) {
@@ -128,7 +127,7 @@ class MapContainer extends Component {
             <p> 1. Click on the map to add a marker</p>
             <p> 2. Click on the marker to open the sidebar</p>
             <p> 3. Choose a button to generate a response!</p>
-            <div class="button-container">
+            <div className="button-container">
               <button onClick={this.handleClick} className='splash-screen-button'>🗺️ Get Started 🗺️</button>
             </div>
             <br />
