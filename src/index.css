@@ -59,6 +59,12 @@ button:hover {
   cursor: pointer;
 }
 
+button.dropdown-item {
+  background: none;
+  border: none;
+}
+
+
 /* dark mode */
 
 .sidebar-wrapper.dark-mode {
