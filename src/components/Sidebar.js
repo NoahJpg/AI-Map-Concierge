@@ -84,7 +84,7 @@ const Sidebar = ({ address, lat, lng }) => {
       <h2 className="title">How can I help you?</h2>
 
       <button className='dropdown-question' onClick={handleToggleQuestions}>
-        {showQuestions ? '⬆️' : '⬇️'}<em>&nbsp;Questions</em> 
+        {showQuestions ? '⬆️' : '⬇️ Show Questions'} 
       </button>
 
       {showQuestions && (

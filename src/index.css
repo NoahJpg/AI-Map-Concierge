@@ -180,8 +180,8 @@ p.light {
 
 .splash-screen-button:hover {
   transform: scale(1.1);
-  color:#0047AB;
-  border: 2px solid darkblue;
+  color: darkgreen;
+  border: 2px solid darkgreen;
 }
 
 .button-container {

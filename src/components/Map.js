@@ -48,7 +48,8 @@ class MapContainer extends Component {
       markers: [...this.state.markers, newMarker], 
       lat: newMarker.lat, 
       lng: newMarker.lng,
-      showInfoWindow: true
+      isMarkerClicked: true,
+      selectedPlace: {}
     });
 
     this.getAddressFromLatLong(newMarker.lat, newMarker.lng);
