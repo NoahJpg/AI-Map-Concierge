@@ -60,8 +60,13 @@ button:hover {
 }
 
 button.dropdown-item {
+  border: 2px solid black;
+}
+
+button.dropdown-question {
   background: none;
   border: none;
+  border: 1px solid black;
 }
 
 
@@ -79,11 +84,14 @@ button.dropdown-item {
 .btn-mode.light {
   color: #fff;
   background-color: #333;
+  border: 2px solid white;
+  
 }
 
 .btn-mode.dark {
   color: #222;
   background-color: #fff;
+  border: 2px solid black;
 }
 
 p.dark {
@@ -167,11 +175,13 @@ p.light {
   padding: 10px 20px;
   border-radius: 5px;
   transition: transform 0.3s ease;
+  border: 2px solid black;
 }
 
 .splash-screen-button:hover {
   transform: scale(1.1);
-  color:#0047AB
+  color:#0047AB;
+  border: 2px solid darkblue;
 }
 
 .button-container {
