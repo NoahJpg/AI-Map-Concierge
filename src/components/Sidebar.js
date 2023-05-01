@@ -9,7 +9,7 @@ const Sidebar = ({ address, lat, lng }) => {
   const [generatedText, setGeneratedText] = useState('');
   const [temperature, setTemperature] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [maxTokens, setMaxTokens] = useState(200);
+  const [maxTokens, setMaxTokens] = useState(100);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
@@ -95,7 +95,7 @@ const Sidebar = ({ address, lat, lng }) => {
       />
       <PresetQuestion
         buttonText='What is the Average Home Price?'
-        prompt={`Pretend you are a real estate agent who knows all about the  neighborhood where this is located: ${address} and tell them the average home price of the neighborhood as of the year the data comes from.`}
+        prompt={`Pretend you are a real estate agent who knows all about the neighborhood where this is located: ${address} and tell them the average home price of the neighborhood as of the year the data comes from.`}
         maxTokens={maxTokens}
         temperature={temperature}
       />
