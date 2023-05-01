@@ -8,7 +8,7 @@ body {
   background-color: #ADD8E6;
   background-image: url("img/old-map.jpg");
   background-size: cover;
-}
+} 
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -79,6 +79,15 @@ button:hover {
   color: #222;
   background-color: #fff;
 }
+
+p.dark {
+  color: white;
+}
+
+p.light {
+  color: black;
+}
+
 
 /* hide the sliders */
 .dropdown {
@@ -198,4 +207,78 @@ button:hover {
   opacity: 1;
   transition: opacity 1s ease-in-out;
 }
+
+/* iMessage Look  */
+.preset-questions-container {
+  background-color: #F5F7FA;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
+  margin: 20px;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.preset-questions-item {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  margin: 10px;
+  max-width: 80%;
+  padding: 10px;
+}
+
+.preset-questions-item .message {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.preset-questions-item .time {
+  color: #BEC6D1;
+  font-size: 12px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.preset-questions-item .reply {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.preset-questions-item .reply span {
+  color: #57606F;
+  font-weight: bold;
+}
+
+.custom-question-item {
+  background-color: #f5f5f7;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.reply-bubble {
+  background-color: #F5F7FA;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.reply-bubble:after {
+  border: 10px solid transparent;
+  border-bottom-color: #F5F7FA;
+  border-top: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  z-index: -1;
+}
+
 
