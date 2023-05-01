@@ -48,7 +48,6 @@ const Sidebar = ({ address, lat, lng }) => {
       <p className={isDarkMode ? 'dark' : 'light'}>
       {generatedText}
       </p>
-      &nbsp;&nbsp;&nbsp;&nbsp;
       <div className="dropdown">
         <button 
           className={showSettings ? "dropdown-active" : "dropdown-item"}
@@ -83,10 +82,18 @@ const Sidebar = ({ address, lat, lng }) => {
       
       <h2 className="title">How can I help you?</h2>
 
+      <CustomQuestion 
+        prompt={`Pretend you are a friend who lives nearby and reply to this prompt, but make your response to the prompt only related to this address: ${address}.`}
+      />
+      
       <button className='dropdown-question' onClick={handleToggleQuestions}>
         {showQuestions ? '⬆️' : '⬇️ Show Questions'} 
       </button>
+      
+      <br />
 
+      <div className='custom-question-item'>
+      
       {showQuestions && (
         <div className='preset-questions-container'>
         <div className='preset-questions-item'>
@@ -99,7 +106,7 @@ const Sidebar = ({ address, lat, lng }) => {
         </div>
         <div className='preset-questions-item'>
           <PresetQuestion
-            buttonText='What is the weather like in this area?'
+            buttonText='What is the weather like here?'
             prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area.`}
             maxTokens={maxTokens}
             temperature={temperature}
@@ -130,23 +137,20 @@ const Sidebar = ({ address, lat, lng }) => {
           />
         </div>
       </div>
+   
       )}
-      
-      <div className='custom-question-item'>
-      <CustomQuestion 
-        prompt={`Pretend you are a friend who lives nearby and reply to this prompt, but make your response to the prompt only related to this address: ${address}.`}
-      /></div>
-
+  </div>
+      {/* GPT RESPONSE */}
+      <div className='answer'>
+        {isLoading ? (
+          <p className={isDarkMode ? 'dark loading-bubble' : 'light loading-bubble'}>Loading...</p>
+        ) : (
+          <div className='generated-text'>
+            <p className={isDarkMode ? 'dark' : 'light'}>{generatedText}</p>
+          </div>
+        )}
+      </div>
       <br /><br />
-
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <p>{generatedText}</p>
-      )}
-
-      <br /><br />
-     
     </div>
 
     

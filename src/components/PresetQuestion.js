@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { generateText } from "./ChatGPT";
+import isDarkMode from './Sidebar'
 
 const PresetQuestion = ({ buttonText, prompt, maxTokens, temperature }) => {
   const [userInput, setUserInput] = useState("");
@@ -14,18 +15,22 @@ const PresetQuestion = ({ buttonText, prompt, maxTokens, temperature }) => {
     setIsLoading(false);
   }
 
-    return (
-      <div>
-        <br />
-          <button onClick={handleButtonSubmit}>{buttonText}</button>
-        <br />
+  return (
+    <div className="answer">
+      <br />
+      <button onClick={handleButtonSubmit}>{buttonText}</button>
+      <br />
+      <div className='answer'>
         {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <p>{generatedText}</p>
-      )}
+          <p className={isDarkMode ? 'dark loading-bubble' : 'light loading-bubble'}>Loading...</p>
+        ) : (
+          <div className='generated-text'>
+            <p className={isDarkMode ? 'dark' : 'light'}>{generatedText}</p>
+          </div>
+        )}
       </div>
-    )
+    </div>
+  );
 }
 
 export default PresetQuestion;

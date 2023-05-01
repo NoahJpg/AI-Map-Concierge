@@ -43,7 +43,7 @@ const getGeneratedText = async (address) => {
 
     const generatedText = response.data.choices[0].text.trim();
     console.log("Gpt Text", generatedText);
-    return <p className={isDarkMode ? 'dark' : 'light'}>{generatedText}</p>
+    return generatedText;
   } catch (error) {
     console.error(error);
     throw new Error('Error generating text');

@@ -24,7 +24,6 @@ code {
   z-index: 0;
 }
 
-
 .sidebar-wrapper {
   position: relative;
   background-color: #FAFAFA;
@@ -34,7 +33,7 @@ code {
   border: 1px solid #CCCCCC;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #CCCCCC;
-  width: 310px;
+  width: 400px;
   height: fit-content;
   z-index: 1;
 }
@@ -64,11 +63,8 @@ button.dropdown-item {
 }
 
 button.dropdown-question {
-  background: none;
-  border: none;
   border: 1px solid black;
 }
-
 
 /* dark mode */
 
@@ -94,11 +90,11 @@ button.dropdown-question {
   border: 2px solid black;
 }
 
-p.dark {
+p.dark-mode {
   color: white;
 }
 
-p.light {
+p.light-mode {
   color: black;
 }
 
@@ -224,7 +220,9 @@ p.light {
   transition: opacity 1s ease-in-out;
 }
 
+
 /* iMessage Look  */
+/* 
 .preset-questions-container {
   background-color: #F5F7FA;
   border-radius: 10px;
@@ -244,40 +242,18 @@ p.light {
   padding: 10px;
 }
 
-.preset-questions-item .message {
-  font-size: 16px;
-  margin-left: 10px;
-}
-
-.preset-questions-item .time {
-  color: #BEC6D1;
-  font-size: 12px;
-  margin-left: auto;
-  margin-right: 10px;
-}
-
-.preset-questions-item .reply {
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.preset-questions-item .reply span {
-  color: #57606F;
-  font-weight: bold;
-}
-
 .custom-question-item {
-  background-color: #f5f5f7;
-  border-radius: 20px;
-  padding: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 10px;
+  width: fit-content;
+  padding: 10px;
 }
 
-
-.reply-bubble {
+.loading-bubble {
   background-color: #F5F7FA;
   border-radius: 10px;
   display: inline-block;
@@ -285,7 +261,7 @@ p.light {
   margin-top: 10px;
 }
 
-.reply-bubble:after {
+.loading-bubble:after {
   border: 10px solid transparent;
   border-bottom-color: #F5F7FA;
   border-top: 0;
@@ -297,4 +273,50 @@ p.light {
   z-index: -1;
 }
 
+.answer {
+  position: relative;
+}
 
+.generated-text {
+  background-color: #F5F7FA;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.generated-text:after {
+  border: 10px solid transparent;
+  border-bottom-color: #F5F7FA;
+  border-top: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  z-index: -1;
+}
+
+.loading-bubble .dark-mode
+.generated-text .dark-mode {
+  background-color: #2C3E50;
+  color: #FFF;
+}
+
+.loading-bubble:after .dark-mode,
+.generated-text:after .dark-mode {
+  border-bottom-color: #2C3E50;
+}
+
+.loading-bubble .light-mode,
+.generated-text .light-mode {
+  background-color: #F5F7FA;
+  color: #333;
+}
+
+.loading-bubble:after .light-mode,
+.generated-text:after .light-mode {
+  border-bottom-color: #F5F7FA;
+}
+
+ */
