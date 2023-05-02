@@ -6,28 +6,25 @@ const SplashScreen = ({ handleClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [buttonClicked, setButtonClicked] = useState(false);
+  const {isAuthenticated, user } = useAuthentication();
   const signIn = UseSignIn(email, password);
   const signInWithGoogle = UseSignInWithGoogle();
   const logout = UseLogout();
-  const {isAuthenticated } = useAuthentication();
-  console.log("authenticated", isAuthenticated)
-
-
+  
   const handleSignInClick = (e) => {
     e.preventDefault();
     setButtonClicked(true);
     signIn();
     setEmail("");
     setPassword("");
-    console.log("signed in sucessfully!");
   }
 
   const handleGoogleSignIn = (e) => {
     e.preventDefault();
     signInWithGoogle();
-    console.log("signed in with googlesucessfully!")
   }
-
+  console.log('useremail!!', user)
+ 
   return (
     <div >
       <h1>🤖 Welcome to the AI Map Concierge! 🗺️ </h1>
@@ -50,9 +47,9 @@ const SplashScreen = ({ handleClick }) => {
       </div>
 
       <div className="sign-in-wrapper">
-        {isAuthenticated ? (
-          <p> Signed in! </p>
-        ) : (
+        {isAuthenticated 
+        ? (<p> Signed in as: {user?.email} </p>) 
+        : (
           <form>
             <input 
               required={buttonClicked}
@@ -80,11 +77,13 @@ const SplashScreen = ({ handleClick }) => {
             </button>
           </form>
         )}
-        <button 
-          onClick={logout} 
-          className="sign-in-button"> 
-          🚪 Logout 🚪 
-        </button>
+        {isAuthenticated && (
+          <button 
+            onClick={logout} 
+            className="sign-in-button"> 
+            🚪 Logout 🚪 
+          </button>
+        )}
       </div>
     </div>
   );

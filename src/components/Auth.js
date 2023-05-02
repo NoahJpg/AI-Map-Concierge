@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, si
 
 export const useAuthentication = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsAuthenticated(!!user);
@@ -21,9 +21,13 @@ export const useAuthentication = () => {
 };
 
 export const UseSignIn = (email, password) => {
+  const [user, setUser] = useState(null);
+
   const signIn = async () => {
+    setUser(user);
     try {
-      await createUserWithEmailAndPassword(auth, email, password)
+      const result = await createUserWithEmailAndPassword(auth, email, password)
+      setUser(result.user)
     } catch (err) {
       console.error(err);
     }
@@ -32,9 +36,12 @@ export const UseSignIn = (email, password) => {
 };
 
 export const UseSignInWithGoogle = () => {
+  const [user, setUser] = useState(null);
+
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider)
+      const result = await signInWithPopup(auth, googleProvider)
+      setUser(result.user);
     } catch (err) {
       console.error(err);
     }
@@ -43,6 +50,7 @@ export const UseSignInWithGoogle = () => {
 };
 
 export const UseLogout = () => {
+  
   const logout = async () => {
     try {
       await signOut(auth)
