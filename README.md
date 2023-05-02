@@ -49,6 +49,7 @@
 * _Node-Fetch_
 * _Open AI_
 * _Eslint_
+* _Firebase_
 
 ## Setup and Installation Requirements
 

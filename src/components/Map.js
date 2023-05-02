@@ -3,6 +3,9 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
+import { useSignIn, useSignInWithGoogle, useLogout } from './Auth';
+import SplashScreen from './Splash';
+
 
 class MapContainer extends Component {  
   constructor(props) {
@@ -31,12 +34,11 @@ class MapContainer extends Component {
   componentDidMount() {
     this.setState({ mapMounted: true})
     this.setState({ showSplash: true });
-    // Wait for 1 second before hiding the splash screen
   }
 
   handleClick = () => {
     this.setState({ fadeOut: true });
-    this.setState({showSplash: false})
+    this.setState({ showSplash: false })
   }
 
   onMapClick = (mapProps, map, clickEvent) => {
@@ -119,21 +121,9 @@ class MapContainer extends Component {
     if (showSplash) {
       return (
         <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
-          <h1>Welcome to the AI Map Concierge! 🗺️ </h1>
-          <h3>This app allows you to AI-Generate information about any location on the map.</h3>
-          <div className='splash-p-tags'>
-            <p> - Click on the map to add a marker.</p>
-            <p> - Choose a button or type a custom question to generate a response!</p>
-            <p> - Mess around with the advanced settings to see what kind of results you can get!</p>
-            <div className="button-container">
-              <button onClick={this.handleClick} className='splash-screen-button'>🗺️ Get Started 🗺️</button>
-            </div>
-            <br />
-            <p><em>* Results may be inaccurate, outdated, offensive, or harmful. </em></p>
-            <p><em>* Result data typically works best using locations within the USA or popular cities.</em></p>
-            </div>
+          <SplashScreen handleClick={this.handleClick} />
         </div>
-      );
+      )
     }
 
     if (!mapMounted) {

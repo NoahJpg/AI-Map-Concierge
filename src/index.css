@@ -220,103 +220,52 @@ p.light-mode {
   transition: opacity 1s ease-in-out;
 }
 
-
-/* iMessage Look  */
-/* 
-.preset-questions-container {
-  background-color: #F5F7FA;
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
-  margin: 20px;
-  max-width: 500px;
-  padding: 20px;
-}
-
-.preset-questions-item {
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+/* Splash Screen Sign in */
+.sign-in-wrapper {
   display: flex;
-  margin: 10px;
-  max-width: 80%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  }
+  
+  .sign-in-input {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  font-size: 1.2rem;
   padding: 10px;
-}
-
-.custom-question-item {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
-  display: flex;
-  margin: 10px;
-  width: fit-content;
-  padding: 10px;
-}
-
-.loading-bubble {
-  background-color: #F5F7FA;
-  border-radius: 10px;
-  display: inline-block;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-.loading-bubble:after {
-  border: 10px solid transparent;
-  border-bottom-color: #F5F7FA;
-  border-top: 0;
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -20px;
-  left: 20px;
-  z-index: -1;
-}
-
-.answer {
-  position: relative;
-}
-
-.generated-text {
-  background-color: #F5F7FA;
-  border-radius: 10px;
-  display: inline-block;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-.generated-text:after {
-  border: 10px solid transparent;
-  border-bottom-color: #F5F7FA;
-  border-top: 0;
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -20px;
-  left: 20px;
-  z-index: -1;
-}
-
-.loading-bubble .dark-mode
-.generated-text .dark-mode {
-  background-color: #2C3E50;
-  color: #FFF;
-}
-
-.loading-bubble:after .dark-mode,
-.generated-text:after .dark-mode {
-  border-bottom-color: #2C3E50;
-}
-
-.loading-bubble .light-mode,
-.generated-text .light-mode {
-  background-color: #F5F7FA;
-  color: #333;
-}
-
-.loading-bubble:after .light-mode,
-.generated-text:after .light-mode {
-  border-bottom-color: #F5F7FA;
-}
-
- */
+  margin-bottom: 20px;
+  transition: border-color 0.2s ease-in-out;
+  width: 100%;
+  max-width: 350px;
+  }
+  
+  .sign-in-input:focus {
+  outline: none;
+  border-color: #6bb9f0;
+  }
+  
+  .sign-in-button {
+  background-color: #007bff;
+  color: #000000;
+  margin-left: 5px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  border: 2px solid #007bff;
+  cursor: pointer;
+  }
+  
+  .sign-in-button:hover {
+  transform: translateY(-2px);
+  }
+  
+  .sign-in-button:active {
+  transform: translateY(1px);
+  border: 2px solid #007bff;
+  }
+  
+  .sign-in-button:focus {
+  outline: none;
+  }
