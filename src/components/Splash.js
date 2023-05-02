@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UseSignIn, UseSignInWithGoogle, UseLogout, useAuthentication } from './Auth';
+import { UseSignIn, UseSignInWithGoogle, UseSignUp, UseLogout, useAuthentication } from './Auth';
 import { auth } from '../config/firebase'
 
 const SplashScreen = ({ handleClick }) => {
@@ -8,13 +8,22 @@ const SplashScreen = ({ handleClick }) => {
   const [buttonClicked, setButtonClicked] = useState(false);
   const {isAuthenticated, user } = useAuthentication();
   const signIn = UseSignIn(email, password);
+  const signUp = UseSignUp(email, password);
   const signInWithGoogle = UseSignInWithGoogle();
   const logout = UseLogout();
   
-  const handleSignInClick = (e) => {
+  const handleSignInClick = async (e) => {
     e.preventDefault();
     setButtonClicked(true);
-    signIn();
+    await signIn();
+    setEmail("");
+    setPassword("");
+  }
+
+  const handleSignUpClick = async (e) => {
+    e.preventDefault();
+    setButtonClicked(true);
+    await signUp();
     setEmail("");
     setPassword("");
   }
@@ -23,8 +32,7 @@ const SplashScreen = ({ handleClick }) => {
     e.preventDefault();
     signInWithGoogle();
   }
-  console.log('useremail!!', user)
- 
+
   return (
     <div >
       <h1>🤖 Welcome to the AI Map Concierge! 🗺️ </h1>
@@ -45,7 +53,7 @@ const SplashScreen = ({ handleClick }) => {
         <p><em>* Results may be inaccurate, outdated, offensive, or harmful. </em></p>
         <p><em>* Result data typically works best using locations within the USA or popular cities.</em></p>
       </div>
-
+      
       <div className="sign-in-wrapper">
         {isAuthenticated 
         ? (<p> Signed in as: {user?.email} </p>) 
@@ -68,7 +76,12 @@ const SplashScreen = ({ handleClick }) => {
             <button 
               onClick={handleSignInClick} 
               className="sign-in-button"> 
-              🔑 Sign In 🔑 / Sign Up 
+              🔑 Sign In 🔑 
+            </button>
+            <button 
+              onClick={handleSignUpClick} 
+              className="sign-in-button"> 
+              Sign Up 
             </button>
             <button 
               onClick={handleGoogleSignIn} 

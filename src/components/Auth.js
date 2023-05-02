@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { auth, googleProvider } from "../config/firebase"
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth"
 
 export const useAuthentication = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsAuthenticated(!!user);
+      setUser(user)
+      console.log('isAuthenticated', isAuthenticated);
+      console.log('user info', user);
     });
     return () => {
       unsubscribe();
@@ -16,23 +20,34 @@ export const useAuthentication = () => {
 
   return {
     isAuthenticated,
+    user,
     setIsAuthenticated,
   };
 };
 
-export const UseSignIn = (email, password) => {
-  const [user, setUser] = useState(null);
+export const UseSignUp = (email, password) => {
 
-  const signIn = async () => {
-    setUser(user);
+  const signUp = async () => {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password)
-      setUser(result.user)
+      console.log(result)
     } catch (err) {
-      console.error(err);
+      alert(err);
     }
   };
-  return signIn;
+  return signUp
+};
+
+export const UseSignIn = (email, password) => {
+
+  const signIn = async () => {
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password)
+    } catch (err) {
+      alert(err);
+    }
+  };
+  return signIn
 };
 
 export const UseSignInWithGoogle = () => {
@@ -43,10 +58,10 @@ export const UseSignInWithGoogle = () => {
       const result = await signInWithPopup(auth, googleProvider)
       setUser(result.user);
     } catch (err) {
-      console.error(err);
+      alert(err)
     }
   };
-  return signInWithGoogle;
+  return signInWithGoogle
 };
 
 export const UseLogout = () => {
@@ -55,7 +70,7 @@ export const UseLogout = () => {
     try {
       await signOut(auth)
     } catch (err) {
-      console.error(err);
+      alert(err)
     }
   };
   return logout;
