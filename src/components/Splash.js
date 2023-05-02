@@ -13,14 +13,19 @@ const SplashScreen = ({ handleClick }) => {
   console.log("authenticated", isAuthenticated)
 
 
-  const handleSignInClick = () => {
+  const handleSignInClick = (e) => {
+    e.preventDefault();
     setButtonClicked(true);
     signIn();
+    setEmail("");
+    setPassword("");
+    console.log("signed in sucessfully!");
   }
 
   const handleGoogleSignIn = (e) => {
     e.preventDefault();
     signInWithGoogle();
+    console.log("signed in with googlesucessfully!")
   }
 
   return (
@@ -45,37 +50,41 @@ const SplashScreen = ({ handleClick }) => {
       </div>
 
       <div className="sign-in-wrapper">
-        <form>
-          <input 
-            required={buttonClicked}
-            className="sign-in-input"
-            placeholder="Email..." 
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input 
-            required={buttonClicked}
-            className="sign-in-input"
-            placeholder="Password..."
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <button 
-            onClick={handleSignInClick} 
-            className="sign-in-button"> 
-            🔑 Sign In 🔑 / Sign Up 
-          </button>
-          <button 
-            onClick={handleGoogleSignIn} 
-            className="sign-in-button"> 
-            Sign In With Google 
-          </button>
-          <button 
-            onClick={logout} 
-            className="sign-in-button"> 
-            🚪 Logout 🚪 
-          </button>
-        </form>
+        {isAuthenticated ? (
+          <p> Signed in! </p>
+        ) : (
+          <form>
+            <input 
+              required={buttonClicked}
+              className="sign-in-input"
+              placeholder="Email..." 
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input 
+              required={buttonClicked}
+              className="sign-in-input"
+              placeholder="Password..."
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <button 
+              onClick={handleSignInClick} 
+              className="sign-in-button"> 
+              🔑 Sign In 🔑 / Sign Up 
+            </button>
+            <button 
+              onClick={handleGoogleSignIn} 
+              className="sign-in-button"> 
+              Sign In With Google 
+            </button>
+          </form>
+        )}
+        <button 
+          onClick={logout} 
+          className="sign-in-button"> 
+          🚪 Logout 🚪 
+        </button>
       </div>
     </div>
   );

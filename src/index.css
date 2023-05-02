@@ -232,12 +232,12 @@ p.light-mode {
   border: none;
   border-bottom: 2px solid #ccc;
   background-color: transparent;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   padding: 10px;
   margin-bottom: 20px;
   transition: border-color 0.2s ease-in-out;
-  width: 100%;
-  max-width: 350px;
+  width: fit-content;
+  max-width: 250px;
   }
   
   .sign-in-input:focus {
