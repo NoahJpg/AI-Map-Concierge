@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { InfoWindow } from '@react-google-maps/api';
+import { Autocomplete } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
 import SplashScreen from './Splash';
@@ -90,23 +90,29 @@ class MapContainer extends Component {
   onPlaceChanged = (autocomplete) => {
     if (autocomplete) {
       const place = autocomplete.getPlace();
-      if (place.geometry) {
-        const map = this.mapRef.current.map;
-        const marker = new this.google.maps.Marker({
-          map,
-          position: place.geometry.location
-        });
-        map.setCenter(place.geometry.location);
-        this.setState({
-          address: place.formatted_address,
-          lat: place.geometry.location.lat(),
-          lng: place.geometry.location.lng(),
-          markers: [{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }],
-          place // update the state with the selected place
-        });
-      } else {
-        console.log('Autocomplete returned place with no geometry.');
-      }
+      const { lat, lng } = place.geometry.location;
+      const newMarker = {
+        lat: lat(),
+        lng: lng(),
+      };
+      const address = place.formatted_address;
+
+      const map = this.mapRef.current.map;
+      const marker = new this.props.google.maps.Marker({
+        map,
+        position: newMarker,
+      });
+      map.setCenter(newMarker);
+
+      this.setState({
+        markers: [newMarker],
+        lat: newMarker.lat,
+        lng: newMarker.lng,
+        address,
+        place,
+        selectedPlace: { props: { index: 0 } },
+        isMarkerClicked: true,
+      });
     } else {
       console.log('Autocomplete returned null.');
     }
@@ -146,6 +152,17 @@ class MapContainer extends Component {
               index={index}>          
             </Marker>
           ))}
+          <Autocomplete
+            onLoad={(autocomplete) => this.autocomplete = autocomplete}
+            onPlaceChanged={() => this.onPlaceChanged(this.autocomplete)}
+          >
+            <input
+              type="text"
+              placeholder="Enter an address"
+              className="search-input"
+            />
+          </Autocomplete>
+
         </Map>
 
           {this.state.isMarkerClicked && (

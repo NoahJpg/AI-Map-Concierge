@@ -44,6 +44,23 @@ code {
   margin-top: 0;
 }
 
+.search-input {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 240px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #c9c9c9;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  outline: none;
+}
+
+
 button {
   background-image: linear-gradient(to bottom, #f7f7f7, #ccc);
   border: 1px solid #ccc;
