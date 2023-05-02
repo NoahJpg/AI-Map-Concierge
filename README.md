@@ -1,7 +1,7 @@
 <h1 align="center">🤖 AI Map Concierge 🗺️</h1>
   <p align="center">
     <div style="text-align:center;">
-    <img src="src/img/Map-Screenshot-2.png" 
+    <img src="src/img/Map-Screenshot-3.png" 
          alt="map-screenshot" 
          style="display:inline-block; margin:0 auto; max-width:100%; width:max; height: auto; text-align: center;"
     />
@@ -22,6 +22,8 @@
     <br><br>
     <a href="#description">📝 Description 📚</a>
     <br>
+    <a href="#features">👨‍💻 Features 🕹️</a>
+    <br>
     <a href="#technologies-used">💽 Technologies Used 💾</a>
     <br>
     <a href="#setup-and-installation-requirements">🧰 Setup and Installation Requirements 🔨</a>
@@ -39,17 +41,29 @@
 
   [Live project](https://livable-app.vercel.app/)
 
+## Features
+
+* _Satelite Map Mode, add and remove labels_
+* _Terrain Map Mode_
+* _Custom Question Form that returns unique responses from AI_
+* _Preset Buttons with engineered responses that answer common questions for tourists, new residents, and anyone curious!_
+* _Advanced settings allowing you to generate shorter/longer respones_
+* _Advanced settings allowing you to change Chat GPT "Temperature" which determines how unpredicatable the response is_
+* _Dark Mode/Light Mode Button for the sidebar_
+* _User Authentication required with custom email/ password or Google account login_
+
 ## Technologies Used
 
 * _React_
 * _Bootstrap_
 * _React-Google-Maps-API_
 * _Axios_
+* _Text Davinci 003_
+* _OpenAI_
+* _Firebase_
 * _Express_
 * _Node-Fetch_
-* _Open AI_
 * _Eslint_
-* _Firebase_
 
 ## Setup and Installation Requirements
 
