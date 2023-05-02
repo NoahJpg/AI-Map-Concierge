@@ -2,17 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 
-const apiKey = process.env.FIREBASE_CONFIG
 
-const firebaseConfig = {
-  apiKey: apiKey,
-  authDomain: "ai-map-concierge.firebaseapp.com",
-  projectId: "ai-map-concierge",
-  storageBucket: "ai-map-concierge.appspot.com",
-  messagingSenderId: "1040221752912",
-  appId: "1:1040221752912:web:e7e2630e91bff461c5cb55",
-  measurementId: "G-S1J3F633SC"
-};
+const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
+const authDomain = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
+const projectId = process.env.REACT_APP_FIREBASE_PROJECT_ID;
+const storageBucket = process.env.REACT_APP_FIREBASE_STORAGE_BUCKET;
+const messagingSenderId = process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID;
+const appId = process.env.REACT_APP_FIREBASE_APP_ID;
+const measurementId = process.env.REACT_APP_FIREBASE_MEASUREMENT_ID;
 
 
 const app = initializeApp(firebaseConfig);
