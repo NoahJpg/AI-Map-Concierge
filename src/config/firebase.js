@@ -2,9 +2,10 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 
+const apiKey = process.env.FIREBASE_CONFIG
 
 const firebaseConfig = {
-  apiKey: "AIzaSyADwZlDfrISQUKdWWNiJvK6G-8TfOPIxes",
+  apiKey: apiKey,
   authDomain: "ai-map-concierge.firebaseapp.com",
   projectId: "ai-map-concierge",
   storageBucket: "ai-map-concierge.appspot.com",

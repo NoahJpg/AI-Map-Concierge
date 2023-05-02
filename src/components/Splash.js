@@ -53,7 +53,7 @@ const SplashScreen = ({ handleClick }) => {
         <p><em>* Results may be inaccurate, outdated, offensive, or harmful. </em></p>
         <p><em>* Result data typically works best using locations within the USA or popular cities.</em></p>
       </div>
-      
+
       <div className="sign-in-wrapper">
         {isAuthenticated 
         ? (<p> Signed in as: {user?.email} </p>) 
