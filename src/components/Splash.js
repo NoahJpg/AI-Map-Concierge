@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { UseSignIn, UseSignInWithGoogle, UseLogout } from './Auth';
+import { UseSignIn, UseSignInWithGoogle, UseLogout, useAuthentication } from './Auth';
+import { auth } from '../config/firebase'
 
 const SplashScreen = ({ handleClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [buttonClicked, setButtonClicked] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const signIn = UseSignIn(email, password);
   const signInWithGoogle = UseSignInWithGoogle();
   const logout = UseLogout();
+  const {isAuthenticated } = useAuthentication();
+  console.log("authenticated", isAuthenticated)
+
 
   const handleSignInClick = () => {
     setButtonClicked(true);
     signIn();
-    setIsAuthenticated(true);
   }
 
   const handleGoogleSignIn = (e) => {
     e.preventDefault();
     signInWithGoogle();
-    setIsAuthenticated(true);
   }
 
   return (
