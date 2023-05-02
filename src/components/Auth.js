@@ -32,7 +32,7 @@ export const UseSignUp = (email, password) => {
       const result = await createUserWithEmailAndPassword(auth, email, password)
       console.log(result)
     } catch (err) {
-      alert(err);
+      alert("Check Your Email/Password")
     }
   };
   return signUp
@@ -44,7 +44,7 @@ export const UseSignIn = (email, password) => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password)
     } catch (err) {
-      alert(err);
+      alert("Check Your Login Information") 
     }
   };
   return signIn
@@ -58,7 +58,7 @@ export const UseSignInWithGoogle = () => {
       const result = await signInWithPopup(auth, googleProvider)
       setUser(result.user);
     } catch (err) {
-      alert(err)
+      alert("Something is wrong with your Google Account")
     }
   };
   return signInWithGoogle
