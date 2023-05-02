@@ -3,9 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { InfoWindow } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
-import { useSignIn, useSignInWithGoogle, useLogout } from './Auth';
 import SplashScreen from './Splash';
-
 
 class MapContainer extends Component {  
   constructor(props) {
@@ -77,17 +75,17 @@ class MapContainer extends Component {
     const apiKey = process.env.REACT_APP_GMAP_KEY
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    if (data.results.length > 0) {
-      const address = data.results[0].formatted_address;
-      this.setState({ address }, () => {});
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.results.length > 0) {
+        const address = data.results[0].formatted_address;
+        this.setState({ address }, () => {});
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
-  }
-};
+  };
 
   onPlaceChanged = (autocomplete) => {
     if (autocomplete) {
@@ -116,7 +114,7 @@ class MapContainer extends Component {
 
   render() {
     const { google } = this.props;
-    const { markers, mapMounted, lat, lng, address, showSplash, fadeOut, showInfoWindow } = this.state;
+    const { markers, mapMounted, lat, lng, address, showSplash, fadeOut} = this.state;
 
     if (showSplash) {
       return (
@@ -138,24 +136,14 @@ class MapContainer extends Component {
           initialCenter={{ lat: 37.0902, lng: -95.7129 }}
           mapContainerClassName="map-container"
           onClick={this.onMapClick}
-          ref={this.mapRef}
-        >
+          ref={this.mapRef}>
+            
           {markers.map((marker, index) => (
             <Marker 
               key={index} 
               position={{lat: marker.lat, lng: marker.lng}} 
               onClick={() => this.onMarkerClick(index)}
-              index={index}>
-              {this.state.showInfoWindow &&
-                this.state.selectedPlace.props && 
-                this.state.selectedPlace.props.index === index && (
-                <InfoWindow onCloseClick={this.onCloseInfoWindow}>
-                  <div>
-                    <h3>This is the marker info window</h3>
-                    <p>you can add any content you want here</p>
-                  </div>
-                </InfoWindow> 
-              )}             
+              index={index}>          
             </Marker>
           ))}
         </Map>

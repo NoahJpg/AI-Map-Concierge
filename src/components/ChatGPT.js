@@ -1,5 +1,4 @@
 import axios from 'axios';
-import isDarkMode from './Sidebar'
 
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 const baseURL = 'https://api.openai.com/v1';

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { getGeneratedText } from './ChatGPT';
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import CustomQuestion from './CustomQuestion';
@@ -18,7 +17,6 @@ const Sidebar = ({ address, lat, lng }) => {
   const handleToggleQuestions = () => {
     setShowQuestionms(!showQuestions);
   }
-
 
   const handleTemperatureChange = (e) => {
     setTemperature(parseFloat(e.target.value));
@@ -78,6 +76,7 @@ const Sidebar = ({ address, lat, lng }) => {
         </div>
       </div>
       <p><span className='title'>Address: </span><em>{address}</em></p>
+      
       <hr /><br/ ><br/ >
       
       <h2 className="title">How can I help you?</h2>
@@ -93,57 +92,56 @@ const Sidebar = ({ address, lat, lng }) => {
       <br />
 
       <div className='custom-question-item'>
-      
-      {showQuestions && (
-        <div className='preset-questions-container'>
-        <div className='preset-questions-item'>
-          <PresetQuestion
-            buttonText='What is there to do here?'
-            prompt={`Pretend you are a friend who lives in this city: ${address} and reccomend things to do around the neighborhood.`}
-            maxTokens={maxTokens}
-            temperature={temperature}
-          />
-        </div>
-        <div className='preset-questions-item'>
-          <PresetQuestion
-            buttonText='What is the weather like here?'
-            prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area.`}
-            maxTokens={maxTokens}
-            temperature={temperature}
-          />
-        </div>
-        <div className='preset-questions-item'>
-          <PresetQuestion
-            buttonText='What is the Walk Score®?'
-            prompt={`Pretend you are a friend who lives in this city: ${address} and tell them the Walk Score and explain what the score means. Then tell them the Transit Score, and Bike Score.`}
-            maxTokens={maxTokens}
-            temperature={temperature}
-          />
-        </div>
-        <div className='preset-questions-item'>
-          <PresetQuestion
-            buttonText='What are the best restaurants?'
-            prompt={`Pretend you are a friend who lives in this city: ${address} and tell them the top 3 restaurants in the area.`}
-            maxTokens={maxTokens}
-            temperature={temperature}
-          />
-        </div>
-        <div className='preset-questions-item'>
-          <PresetQuestion
-            buttonText='Recommendations for date night?'
-            prompt={`Pretend you are a friend who lives in this city: ${address} and create the perfect date night for them specific to this location. Recommend a romantic restaurant, a nice activity, and a specific place to go if they want to stay out.`}
-            maxTokens={maxTokens}
-            temperature={temperature}
-          />
-        </div>
+        {showQuestions && (
+          <div className='preset-questions-container'>
+          <div className='preset-questions-item'>
+            <PresetQuestion
+              buttonText='What is there to do here?'
+              prompt={`Pretend you are a friend who lives in this city: ${address} and reccomend things to do around the neighborhood.`}
+              maxTokens={maxTokens}
+              temperature={temperature}
+            />
+          </div>
+          <div className='preset-questions-item'>
+            <PresetQuestion
+              buttonText='What is the weather like here?'
+              prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area.`}
+              maxTokens={maxTokens}
+              temperature={temperature}
+            />
+          </div>
+          <div className='preset-questions-item'>
+            <PresetQuestion
+              buttonText='What is the Walk Score®?'
+              prompt={`Pretend you are a friend who lives in this city: ${address} and tell them the Walk Score and explain what the score means. Then tell them the Transit Score, and Bike Score.`}
+              maxTokens={maxTokens}
+              temperature={temperature}
+            />
+          </div>
+          <div className='preset-questions-item'>
+            <PresetQuestion
+              buttonText='What are the best restaurants?'
+              prompt={`Pretend you are a friend who lives in this city: ${address} and tell them the top 3 restaurants in the area.`}
+              maxTokens={maxTokens}
+              temperature={temperature}
+            />
+          </div>
+          <div className='preset-questions-item'>
+            <PresetQuestion
+              buttonText='Recommendations for date night?'
+              prompt={`Pretend you are a friend who lives in this city: ${address} and create the perfect date night for them specific to this location. Recommend a romantic restaurant, a nice activity, and a specific place to go if they want to stay out.`}
+              maxTokens={maxTokens}
+              temperature={temperature}
+            />
+          </div>
+          </div>
+        )}
       </div>
-   
-      )}
-  </div>
+
       {/* GPT RESPONSE */}
       <div className='answer'>
         {isLoading ? (
-          <p className={isDarkMode ? 'dark loading-bubble' : 'light loading-bubble'}>Loading...</p>
+          <p>Loading...</p>
         ) : (
           <div className='generated-text'>
             <p className={isDarkMode ? 'dark' : 'light'}>{generatedText}</p>
@@ -152,8 +150,6 @@ const Sidebar = ({ address, lat, lng }) => {
       </div>
       <br /><br />
     </div>
-
-    
   );
 };
 
