@@ -142,7 +142,7 @@ class MapContainer extends Component {
         position: newMarker,
       });
       map.setCenter(newMarker);
-      map.setZoom(12)
+      map.setZoom(12);
 
       this.setState({
         markers: [newMarker],

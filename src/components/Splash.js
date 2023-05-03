@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { UseSignIn, UseSignInWithGoogle, UseSignUp, UseLogout, useAuthentication } from './Auth';
-import { auth } from '../config/firebase'
 
 const SplashScreen = ({ handleClick }) => {
   const [email, setEmail] = useState("");
@@ -99,6 +98,7 @@ const SplashScreen = ({ handleClick }) => {
           </button>
         )}
       </div>
+      <p className="copyright"> © 2023 Noah Atkinson </p>
     </div>
   );
 };
