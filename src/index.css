@@ -75,7 +75,7 @@ code {
   padding: 10px;
   margin-bottom: 20px;
   transition: border-color 0.2s ease-in-out;
-  width: fit-content;
+  width: 500px;
   max-width: 250px;
 }
 

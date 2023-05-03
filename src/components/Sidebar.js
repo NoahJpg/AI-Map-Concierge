@@ -60,7 +60,7 @@ const Sidebar = ({ address}) => {
       />
       
       <button className='dropdown-question' onClick={handleToggleQuestions}>
-        {showQuestions ? '⬆Hide⬆' : '⬇Show Questions⬇'} 
+        {showQuestions ? '⬆Hide⬆' : '⬇Show Preset Questions⬇'} 
       </button>
       
       <br />

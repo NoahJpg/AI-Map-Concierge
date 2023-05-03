@@ -38,8 +38,9 @@ const SplashScreen = ({ handleClick }) => {
       <h1>🤖 Welcome to the AI Map Concierge! 🗺️ </h1>
       <h3>This app allows you to AI-Generate information about any location on the map.</h3>
       <div className='splash-p-tags'>
-        <p> - Click on the map to add a marker.</p>
-        <p> - Choose a preset question or type a custom question to generate a response!</p>
+        <p> - Click on the map to add a marker - or type an address.</p>
+        <p> - Double click a marker to delete it.</p>
+        <p> - Choose a preset question or type a custom question to generate a response from an AI!</p>
         <p> - Change the advanced settings to see what kind of results you can get.</p>
 
         <div className="button-container">

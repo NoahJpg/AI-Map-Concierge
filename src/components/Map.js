@@ -39,6 +39,34 @@ class MapContainer extends Component {
     this.setState({ showSplash: false })
   }
 
+  handleGeolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const newMarker = {
+            lat: lat,
+            lng: lng,
+          };
+          this.setState({
+            markers: [newMarker],
+            lat: lat,
+            lng: lng,
+            isMarkerClicked: true,
+            selectedPlace: {},
+          });
+          this.getAddressFromLatLong(lat, lng);
+        },
+        () => {
+          alert('Could not get your location.');
+        }
+      );
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
+  }
+
   onMapClick = (mapProps, map, clickEvent) => {
     const newMarker = {
       lat: clickEvent.latLng.lat(),
@@ -114,6 +142,7 @@ class MapContainer extends Component {
         position: newMarker,
       });
       map.setCenter(newMarker);
+      map.setZoom(12)
 
       this.setState({
         markers: [newMarker],
@@ -163,6 +192,7 @@ class MapContainer extends Component {
               index={index}>          
             </Marker>
           ))}
+
           <Autocomplete
             onLoad={(autocomplete) => this.autocomplete = autocomplete}
             onPlaceChanged={() => this.onPlaceChanged(this.autocomplete)}
@@ -173,7 +203,6 @@ class MapContainer extends Component {
               className="search-input"
             />
           </Autocomplete>
-
         </Map>
           
             <Sidebar
