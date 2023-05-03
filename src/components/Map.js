@@ -56,13 +56,24 @@ class MapContainer extends Component {
   };
 
   onMarkerClick = (index) => {
-    if (this.state.previousMarker) {
-      this.state.previousMarker.setMap(null);
-    }
+    const marker = this.state.markers[index];
     this.setState({
-      isMarkerClicked: true,
-      selectedPlace: { props: { index } },
+      activeMarker: marker,
+      selectedPlace: { props: { index}},
     });
+    this.deleteMarker()
+  }
+ 
+  deleteMarker = () => {
+    const markers = [...this.state.markers];
+    const index = markers.findIndex((marker) => marker === this.state.activeMarker);
+    if (index !== -1 ) {
+      markers.splice(index, 1);
+      this.setState({
+        markers: markers,
+        activeMarker: null,
+      });
+    }
   }
 
   handleGenerateText = async () => {
@@ -158,14 +169,12 @@ class MapContainer extends Component {
           >
             <input
               type="text"
-              placeholder="Enter an address"
+              placeholder="Enter an address or click on the map"
               className="search-input"
             />
           </Autocomplete>
 
         </Map>
-
-          {this.state.isMarkerClicked && (
           
             <Sidebar
               className="sidebar"
@@ -175,7 +184,6 @@ class MapContainer extends Component {
               generatedText={this.state.generatedText}
               setGeneratedText={(text) => this.setState({ generatedText: text })}
             />
-          )}
        </div>
     );
   }

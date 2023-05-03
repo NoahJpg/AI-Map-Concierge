@@ -26,23 +26,19 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
         <form onSubmit={handleUserInputSubmit}>
           <input
             type="text"
+            className="custom-question"
             placeholder="ask a question"
             onChange={handleUserInputChange}
             value={userInput} 
             required
           /> 
-          &nbsp;&nbsp;
           <button onClick={handleUserInputSubmit} className="submit-button">send</button>
         </form>
         
         <br />
-        {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <p>{generatedText}</p>
-      )}
-
-
+      <div className="generated-text">
+        {isLoading ? (<p>Loading...</p>) : (<p>{generatedText}</p>)}
+      </div>  
       </div>
     )
 }

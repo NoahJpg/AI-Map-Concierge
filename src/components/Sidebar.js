@@ -5,13 +5,11 @@ import CustomQuestion from './CustomQuestion';
 import PresetQuestion from './PresetQuestion';
 
 
-const Sidebar = ({ address, lat, lng }) => {
-  const [generatedText, setGeneratedText] = useState('');
+const Sidebar = ({ address}) => {
+  const [generatedText] = useState('');
+  const [maxTokens] = useState(100);
   const [temperature, setTemperature] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [maxTokens, setMaxTokens] = useState(100);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
   const [showQuestions, setShowQuestionms] = useState(false);
 
   const handleToggleQuestions = () => {
@@ -22,59 +20,35 @@ const Sidebar = ({ address, lat, lng }) => {
     setTemperature(parseFloat(e.target.value));
   };
 
-  const handleMaxTokensChange = (e) => {
-    setMaxTokens(parseInt(e.target.value));
-  };
-
   const handleToggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
   }
 
-  const handleToggleSettings = () => {
-    setShowSettings(!showSettings);
-  }
-
-  const wrapperClassName = `sidebar-wrapper${isDarkMode ? ' dark-mode' : ''}`;
-  const buttonClassName = `btn-mode${isDarkMode ? ' light' : ' dark'}`;
+  const sidebarReturn = `sidebar-wrapper${isDarkMode ? ' dark-mode' : ''}`;
+  const darkModeButton = `btn-mode${isDarkMode ? ' light' : ' dark'}`;
   
-
   return (
-    <div className={wrapperClassName}>
-      <button className={buttonClassName} onClick={handleToggleDarkMode}>
-        {isDarkMode ? '🌝' : '🌚'}
+    <div className={sidebarReturn}>
+
+      <button className={darkModeButton} onClick={handleToggleDarkMode}>
+        {isDarkMode ? '🌝🌝🌝' : '🌚🌚🌚'}
       </button>
+
       <p className={isDarkMode ? 'dark' : 'light'}>
-      {generatedText}
+        {generatedText}
       </p>
-      <div className="dropdown">
-        <button 
-          className={showSettings ? "dropdown-active" : "dropdown-item"}
-          onClick={handleToggleSettings}>
-          Advanced Settings
-        </button>
-        <div className="dropdown-content">
-          <div>
-            <p><b>Unpredictable Factor:</b> <em>{temperature}</em></p>
-            <RangeSlider
-              value={temperature}
-              min={0}
-              max={10}
-              step={.1}
-              onChange={handleTemperatureChange}
-            />
-          </div>
-          <div>
-            <p><strong>Max Response Length: </strong><em><br />{maxTokens} tokens</em></p>
-            <RangeSlider
-              value={maxTokens}
-              min={10}
-              max={100}
-              step={1}
-              onChange={handleMaxTokensChange}
-            />
-          </div>
-        </div>
+  
+      <div className='slider'>
+        <p><b>Response Weirdness Scale:</b> <em>{temperature}</em></p>
+        <RangeSlider
+          value={temperature}
+          min={0}
+          max={10}
+          step={.1}
+          onChange={handleTemperatureChange}
+        />
       </div>
+      <br /><br /><hr />
       <p><span className='title'>Address: </span><em>{address}</em></p>
       
       <hr /><br/ ><br/ >
@@ -86,7 +60,7 @@ const Sidebar = ({ address, lat, lng }) => {
       />
       
       <button className='dropdown-question' onClick={handleToggleQuestions}>
-        {showQuestions ? '⬆️' : '⬇️ Show Questions'} 
+        {showQuestions ? '⬆Hide⬆' : '⬇Show Questions⬇'} 
       </button>
       
       <br />
@@ -97,7 +71,7 @@ const Sidebar = ({ address, lat, lng }) => {
           <div className='preset-questions-item'>
             <PresetQuestion
               buttonText='What is there to do here?'
-              prompt={`Pretend you are a friend who lives in this city: ${address} and reccomend things to do around the neighborhood.`}
+              prompt={`Pretend you are a friend who lives in this city: ${address} and reccomend specific things to do around the neighborhood.`}
               maxTokens={maxTokens}
               temperature={temperature}
             />
@@ -105,7 +79,7 @@ const Sidebar = ({ address, lat, lng }) => {
           <div className='preset-questions-item'>
             <PresetQuestion
               buttonText='What is the weather like here?'
-              prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area.`}
+              prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area for each season.`}
               maxTokens={maxTokens}
               temperature={temperature}
             />
@@ -121,7 +95,7 @@ const Sidebar = ({ address, lat, lng }) => {
           <div className='preset-questions-item'>
             <PresetQuestion
               buttonText='What are the best restaurants?'
-              prompt={`Pretend you are a friend who lives in this city: ${address} and tell them the top 3 restaurants in the area.`}
+              prompt={`Pretend you are a friend who lives in this city: ${address} and briefly tell them the top 3 restaurants in the area.`}
               maxTokens={maxTokens}
               temperature={temperature}
             />
@@ -134,17 +108,6 @@ const Sidebar = ({ address, lat, lng }) => {
               temperature={temperature}
             />
           </div>
-          </div>
-        )}
-      </div>
-
-      {/* GPT RESPONSE */}
-      <div className='answer'>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <div className='generated-text'>
-            <p className={isDarkMode ? 'dark' : 'light'}>{generatedText}</p>
           </div>
         )}
       </div>
