@@ -52,6 +52,13 @@
 * _Dark Mode/Light Mode Button for the sidebar_
 * _User Authentication required with custom email/ password or Google account login_
 
+### Research & Planning Log
+#### Friday, 05/05
+
+* 8:20: research ways to improve the app
+* 8:50: read about react native
+* 9:10:  
+
 ## Technologies Used
 
 * _React_
