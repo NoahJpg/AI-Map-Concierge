@@ -112,7 +112,7 @@ const Sidebar = ({ address}) => {
       </div>
       <br /><hr />
       <CustomQuestion 
-        prompt={`Pretend you are a friend who lives nearby and reply to this prompt, but make your response to the prompt only related to this address: ${address}. Be helpful, list specific things related to the question, and try to give as much information as you can.`}
+        prompt={`Pretend you are a friend who lives in this city: ${address} and recommend specific things based on this message: ${prompt}.`}
       />
     </div>
   );

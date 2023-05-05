@@ -55,8 +55,8 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
             value={userInput}
             required
           />
-          <button onClick={handleUserInputSubmit} className="send-button">
-            Send
+          <button onClick={handleUserInputSubmit} className="send-button imessage-send-button">
+          ⇧
           </button>
         </form>
         <div className="loading-container">
