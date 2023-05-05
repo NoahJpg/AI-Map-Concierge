@@ -48,15 +48,10 @@ const SplashScreen = ({ handleClick }) => {
             : <p><br /><b><em>*Please sign in to access the app</em></b></p>
           }
         </div>
-        
-        <br />
-        <p><em>* Results may be inaccurate, outdated, offensive, or harmful. </em></p>
-        <p><em>* Result data typically works best using locations within the USA or popular cities.</em></p>
       </div>
-
       <div className="sign-in-wrapper">
         {isAuthenticated 
-        ? (<p> Signed in as: {user?.email} </p>) 
+        ? (<p> Signed in as: <em>{user?.email}</em></p>) 
         : (
           <form>
             <input 
@@ -72,7 +67,6 @@ const SplashScreen = ({ handleClick }) => {
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <br />
             <button 
               onClick={handleSignInClick} 
               className="sign-in-button"> 
@@ -98,7 +92,11 @@ const SplashScreen = ({ handleClick }) => {
           </button>
         )}
       </div>
-      <p className="copyright"> © 2023 Noah Atkinson </p>
+      
+      <br />
+      <p className="notice-message"><em>* Results may be inaccurate, outdated, offensive, or harmful. </em></p>
+        <p className="notice-message"><em>* Result data typically works best using locations within the USA or popular cities.</em></p>
+        <p className="copyright"> © 2023 Noah Atkinson </p>
     </div>
   );
 };

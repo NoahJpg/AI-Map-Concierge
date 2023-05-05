@@ -1,3 +1,122 @@
-body {
-  background-color: black;
+/* iMessage chat styling */
+
+.chat-message {
+  background-color: #fff;
+  border: 1px solid #e5e5ea;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "SanFrancisco";
+  font-size: 1.25rem;
+  margin: 0 auto 1rem;
+  max-width: 600px;
+  padding: 0.5rem 1.5rem;
 }
+
+.chat-message p {
+  border-radius: 1.15rem;
+  line-height: 1.25;
+  max-width: 75%;
+  padding: 0.5rem .875rem;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.chat-message p::before,
+.chat-message p::after {
+  bottom: -0.1rem;
+  content: "";
+  height: 1rem;
+  position: absolute;
+}
+
+.chat-message .from-me {
+  align-self: flex-end;
+  background-color: #248bf5;
+  color: #fff; 
+}
+
+.chat-message .from-me::before {
+  border-bottom-left-radius: 0.8rem 0.7rem;
+  border-right: 1rem solid #248bf5;
+  right: -0.35rem;
+  transform: translate(0, -0.1rem);
+}
+
+.chat-message .from-me::after {
+  background-color: #fff;
+  border-bottom-left-radius: 0.5rem;
+  right: -40px;
+  transform:translate(-30px, -2px);
+  width: 10px;
+}
+
+.chat-message p[class^="from-"] {
+  margin: 0.5rem 0;
+  width: fit-content;
+}
+
+.chat-message .from-me ~ .from-me {
+  margin: 0.25rem 0 0;
+}
+
+.chat-message .from-me ~ .from-me:not(:last-child) {
+  margin: 0.25rem 0 0;
+}
+
+.chat-message .from-me ~ .from-me:last-child {
+  margin-bottom: 0.5rem;
+}
+
+.chat-message .from-them {
+  align-items: flex-start;
+  background-color: #e5e5ea;
+  color: #000;
+}
+
+.chat-message .from-them:before {
+  border-bottom-right-radius: 0.8rem 0.7rem;
+  border-left: 1rem solid #e5e5ea;
+  left: -0.35rem;
+  transform: translate(0, -0.1rem);
+}
+
+.chat-message .from-them::after {
+  background-color: #fff;
+  border-bottom-right-radius: 0.5rem;
+  left: 20px;
+  transform: translate(-30px, -2px);
+  width: 10px;
+}
+
+.chat-message p[class^="from-"].emoji {
+  background: none;
+  font-size: 2.5rem;
+}
+
+.chat-message p[class^="from-"].emoji::before {
+  content: none;
+}
+
+.no-tail::before {
+  display: none;
+}
+
+.margin-b_none {
+  margin-bottom: 0 !important;
+}
+
+.margin-b_one {
+  margin-bottom: 1rem !important;
+}
+
+.margin-t_one {
+  margin-top: 1rem !important;
+}
+
+/* General styling */
+
+/* @font-face {
+  font-family: "SanFrancisco";
+  src:
+    url("https://cdn.rawgit.com/AllThingsSmitty/fonts/25983b71/SanFrancisco/sanfrancisc */

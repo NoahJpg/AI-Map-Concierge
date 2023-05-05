@@ -336,3 +336,6 @@ p.light-mode {
   color: #b17ceb;
   font-style: italic;
 }
+.notice-message {
+  font-size: xx-small;
+}

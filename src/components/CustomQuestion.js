@@ -37,7 +37,7 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   };
 
   return (
-    <div className="chat-container">
+    <div className="container">
       <div className="conversation-container">
         <Conversation messages={conversation} />
       </div>
