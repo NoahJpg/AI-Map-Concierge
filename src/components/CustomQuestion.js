@@ -38,7 +38,7 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
 
   return (
     <div className="container">
-      <div className="conversation-container">
+      <div className="iMessage">
         <Conversation messages={conversation} />
       </div>
       <div className="input-container">
@@ -56,7 +56,7 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
           </button>
         </form>
         <div className="loading-container">
-          {isLoading && <p>Loading...</p>}
+          {isLoading && <p>...</p>}
         </div>
       </div>
     </div>

@@ -39,8 +39,8 @@ const SplashScreen = ({ handleClick }) => {
       <div className='splash-p-tags'>
         <p> - Click on the map to add a marker - or type an address.</p>
         <p> - Double click a marker to delete it.</p>
-        <p> - Choose a preset question or type a custom question to generate a response from an AI!</p>
-        <p> - Change the advanced settings to see what kind of results you can get.</p>
+        <p> - Choose a preset question or type a custom question to generate a response from an AI.</p>
+        <p> - Change the weirdness scale to see what kind of results you can get!</p>
 
         <div className="button-container">
           {isAuthenticated 

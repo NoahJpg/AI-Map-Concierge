@@ -38,17 +38,7 @@ const Sidebar = ({ address}) => {
         {generatedText}
       </p>
   
-      <div className='slider'>
-        <p><b>Response Weirdness Scale:</b> <em>{temperature}</em></p>
-        <RangeSlider
-          value={temperature}
-          min={0}
-          max={10}
-          step={.1}
-          onChange={handleTemperatureChange}
-        />
-      </div>
-      <br /><br /><hr />
+      <hr />
       <p><span className='title'>Address: </span><em>{address}</em></p>
       
       <hr /><br/ ><br/ >
@@ -56,7 +46,7 @@ const Sidebar = ({ address}) => {
       <h2 className="title">How can I help you?</h2>
 
       <CustomQuestion 
-        prompt={`Pretend you are a friend who lives nearby and reply to this prompt, but make your response to the prompt only related to this address: ${address}.`}
+        prompt={`Pretend you are a friend who lives nearby and reply to this prompt, but make your response to the prompt only related to this address: ${address}. If I don't say anything, just reply with something random.`}
       />
       
       <button className='dropdown-question' onClick={handleToggleQuestions}>
@@ -111,7 +101,18 @@ const Sidebar = ({ address}) => {
           </div>
         )}
       </div>
+    
       <br /><br />
+      <div className='slider'>
+        <p><b>Response Weirdness Scale:</b> <em>{temperature}</em></p>
+        <RangeSlider
+          value={temperature}
+          min={0}
+          max={10}
+          step={.1}
+          onChange={handleTemperatureChange}
+        />
+      </div>
     </div>
   );
 };
