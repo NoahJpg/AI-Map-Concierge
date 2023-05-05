@@ -57,7 +57,6 @@
 
 * 8:20: research ways to improve the app
 * 8:50: read about react native
-* 9:10:  
 
 ## Technologies Used
 
