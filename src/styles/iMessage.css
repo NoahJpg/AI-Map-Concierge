@@ -9,6 +9,8 @@
   margin: 0 auto 1rem;
   max-width: 600px;
   padding: 0.5rem 1.5rem;
+  overflow-y: scroll;
+
 }
 
 .imessage p {
@@ -136,8 +138,20 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 300px;
   padding: 1rem;
+  border-radius: 25px;
+  border: 2px solid #c2c2c2;
+  /* background-color: #f2f2f2; */
+  box-shadow: 0px 0px 10px #000000;
+  width: 350px;
+  height: 70vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  
 }
 
 h1 {
@@ -175,17 +189,14 @@ h2 {
   }
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
 .conversation {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  height: 80%;
+  
+  /* background-color: #f2f2f2; */
 }
 
 .message {
@@ -194,7 +205,7 @@ h2 {
   margin-bottom: 0.5rem;
   padding: 0.75rem;
   border-radius: 1rem;
-  font-size: 1.25rem;
+  font-size: .8rem;
   line-height: 1.5;
 }
 

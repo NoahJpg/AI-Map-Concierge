@@ -42,8 +42,6 @@ const Sidebar = ({ address}) => {
       <p><span className='title'>Address: </span><em>{address}</em></p>
       
       <hr /><br/ ><br/ >
-      
-      {/* <h2 className="title">How can I help you?</h2> */}
 
       
       <button className='dropdown-question' onClick={handleToggleQuestions}>
