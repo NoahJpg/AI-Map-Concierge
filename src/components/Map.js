@@ -178,7 +178,7 @@ class MapContainer extends Component {
       <div className='map-wrapper'>
         <Map
           google={google}
-          zoom={5}
+          zoom={4}
           initialCenter={{ lat: 37.0902, lng: -95.7129 }}
           mapContainerClassName="map-container"
           onClick={this.onMapClick}

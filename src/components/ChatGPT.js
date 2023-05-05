@@ -4,7 +4,7 @@ const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 const baseURL = 'https://api.openai.com/v1';
 const engine = 'text-davinci-002';
 const maxTokens = 100;
-const n = 2;
+const n = 3;
 const temperature = 0.5;
 
 axios.defaults.headers.common['Authorization'] = `Bearer ${apiKey}`;

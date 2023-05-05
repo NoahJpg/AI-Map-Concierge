@@ -43,11 +43,8 @@ const Sidebar = ({ address}) => {
       
       <hr /><br/ ><br/ >
       
-      <h2 className="title">How can I help you?</h2>
+      {/* <h2 className="title">How can I help you?</h2> */}
 
-      <CustomQuestion 
-        prompt={`Pretend you are a friend who lives nearby and reply to this prompt, but make your response to the prompt only related to this address: ${address}. If I don't say anything, just reply with something random.`}
-      />
       
       <button className='dropdown-question' onClick={handleToggleQuestions}>
         {showQuestions ? '⬆Hide⬆' : '⬇Show Preset Questions⬇'} 
@@ -113,6 +110,10 @@ const Sidebar = ({ address}) => {
           onChange={handleTemperatureChange}
         />
       </div>
+      <br /><hr />
+      <CustomQuestion 
+        prompt={`Pretend you are a friend who lives nearby and reply to this prompt, but make your response to the prompt only related to this address: ${address}. Be helpful, list specific things related to the question, and try to give as much information as you can.`}
+      />
     </div>
   );
 };
