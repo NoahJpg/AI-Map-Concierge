@@ -25,6 +25,8 @@ const Sidebar = ({ address}) => {
 
   const sidebarReturn = `sidebar-wrapper${isDarkMode ? ' dark-mode' : ''}`;
   const darkModeButton = `btn-mode${isDarkMode ? ' light' : ' dark'}`;
+
+  console.log("temperature:", temperature)
   
   return (
     <div className={sidebarReturn}>
@@ -105,12 +107,16 @@ const Sidebar = ({ address}) => {
           onChange={handleTemperatureChange}
         />
       </div>
+     
       <br />  <hr /> <br />
       <h1 className='title-center'>iMessage ChatGPT</h1>
       <CustomQuestion 
-        prompt={`Pretend you are a friend who lives in this city: ${address} and recommend specific things to do related to this question: ${prompt}.`}
+        prompt={`Pretend you are a friend who lives in this city:${address} and respond to this question in a helpful way ${prompt}.`}
+        temperature={temperature}
+        n={5}
       />
     </div>
+     
   );
 };
 
