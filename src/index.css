@@ -80,6 +80,7 @@ code {
   transition: border-color 0.2s ease-in-out;
   width: 500px;
   max-width: 250px;
+  max-height: fit-content;
 }
 
 .dark-mode .custom-question {
