@@ -24,7 +24,7 @@ If you finish developing the minimum viable product (MVP) with time to spare, wh
 - A feature that allows user to enter an address and have it autocomplete and suggest addresses x
 - Use that address as the address for the AI Chat query x
 - Create a splash screen that welcomes user and explains how the app works x
-- Update chat feature to look like an iMessage conversation with ChatAI
+- Update chat feature to look like an iMessage conversation with ChatAI x
 - Mobile Support 
 
 What additional tools, frameworks, libraries, APIs, or other resources will these additional features require?

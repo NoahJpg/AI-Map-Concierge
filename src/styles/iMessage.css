@@ -1,5 +1,5 @@
 .imessage {
-  background-color: #fff;
+  background-color: #ffffff7a;
   border: 1px solid #e5e5ea;
   border-radius: 0.25rem;
   display: flex;
@@ -12,6 +12,11 @@
   overflow-y: scroll;
   position: relative;
 }
+
+.dark-mode .imessage{
+  background-color: #000;
+}
+
 
 .imessage p {
   border-radius: 1.15rem;

@@ -72,6 +72,7 @@ code {
 .custom-question {
   border: none;
   border-bottom: 2px solid #ccc;
+  color: black;
   background-color: transparent;
   font-size: 1.0rem;
   padding: 10px;
@@ -79,6 +80,10 @@ code {
   transition: border-color 0.2s ease-in-out;
   width: 500px;
   max-width: 250px;
+}
+
+.dark-mode .custom-question {
+  color: white;
 }
 
 .preset-questions-item:hover {
