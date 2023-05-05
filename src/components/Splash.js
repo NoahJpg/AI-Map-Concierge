@@ -45,7 +45,7 @@ const SplashScreen = ({ handleClick }) => {
         <div className="button-container">
           {isAuthenticated 
             ? <button onClick={handleClick} className='splash-screen-button'>🗺️ Get Started 🗺️</button> 
-            : <p><br /><b><em>*Please sign in to access the app</em></b></p>
+            : <p><b><em>*Please sign in to access the app</em></b></p>
           }
         </div>
       </div>

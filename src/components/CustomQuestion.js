@@ -4,13 +4,17 @@ import "../styles/iMessage.css";
 
 const Conversation = ({ messages }) => (
   <div className="conversation">
-    {messages.map(({ text, isUser }) => (
-      <div className={isUser ? "user-message" : "generated-message"}>
+    {messages.map(({ text, isUser }, i) => (
+      <div
+        key={i}
+        className={isUser ? "user-message message" : "generated-message message"}
+      >
         {text}
       </div>
     ))}
   </div>
 );
+
 
 const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   const [userInput, setUserInput] = useState("");
@@ -38,7 +42,7 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
 
   return (
     <div className="container">
-      <div className="iMessage">
+      <div className="imessage">
         <Conversation messages={conversation} />
       </div>
       <div className="input-container">

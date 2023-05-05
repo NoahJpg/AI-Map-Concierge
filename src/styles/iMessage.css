@@ -174,3 +174,40 @@ h2 {
     margin: 0.5rem 0;
   }
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.conversation {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.message {
+  display: inline-block;
+  max-width: 70%;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #007aff;
+  color: #fff;
+  margin-right: 1rem;
+}
+
+.generated-message {
+  align-self: flex-start;
+  background-color: #e5e5ea;
+  color: #000;
+  margin-left: 1rem;
+}
