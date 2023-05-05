@@ -43,11 +43,12 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   return (
     <div className="container">
       <div className="imessage">
-        <div className="chat-header">
-          <img src="https://via.placeholder.com/40x40" alt="ChatGPT Profile Picture" />
-          <h2>ChatGPT</h2>
-        </div>
         <Conversation messages={conversation} />
+        {isLoading && (
+          <p className="loading-container">
+            ...
+          </p>
+        )}
       </div>
       <div className="input-container">
         <form onSubmit={handleUserInputSubmit}>
@@ -63,9 +64,6 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
           ⇧
           </button>
         </form>
-        <div className="loading-container">
-          {isLoading && <p>...</p>}
-        </div>
       </div>
     </div>
   );

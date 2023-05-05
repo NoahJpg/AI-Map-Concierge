@@ -8,33 +8,9 @@
   font-size: 1.25rem; 
   margin: 0 auto 1rem;
   max-width: 600px;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem 1.5rem;
   overflow-y: scroll;
   position: relative;
-}
-
-.chat-header {
-  position: relative;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  justify-content: flex-start;
-}
-
-.chat-header img {
-  width: 40px;
-  height: 40px;
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  justify-content: flex-start;
-}
-
-.chat-header h2 {
-  margin: 0;
-  font-size: 1rem;
-  justify-content: flex-start;
 }
 
 .imessage p {
@@ -161,6 +137,7 @@ body {
   margin: 0;
 }
 
+
 .container {
   margin: 0 auto;
   max-width: 300px;
@@ -218,8 +195,6 @@ h2 {
   flex-direction: column;
   justify-content: flex-start;
   height: 80%;
-  
-  /* background-color: #f2f2f2; */
 }
 
 .message {
