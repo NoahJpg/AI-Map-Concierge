@@ -21,9 +21,9 @@ What tools, frameworks, libraries, APIs, modules and/or other resources (whateve
 - Eslint
 
 If you finish developing the minimum viable product (MVP) with time to spare, what will you work on next? Describe these features here: Be specific.
-- A feature that allows user to enter an address and have it autocomplete and suggest addresses
-- Use that address as the address for the AI Chat query
-- Create a splash screen that welcomes user and explains how the app works
+- A feature that allows user to enter an address and have it autocomplete and suggest addresses x
+- Use that address as the address for the AI Chat query x
+- Create a splash screen that welcomes user and explains how the app works x
 - Update chat feature to look like an iMessage conversation with ChatAI
 - Mobile Support 
 
