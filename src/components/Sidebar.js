@@ -4,7 +4,6 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import CustomQuestion from './CustomQuestion';
 import PresetQuestion from './PresetQuestion';
 
-
 const Sidebar = ({ address}) => {
   const [generatedText] = useState('');
   const [maxTokens] = useState(100);
@@ -43,7 +42,6 @@ const Sidebar = ({ address}) => {
       
       <hr /><br/ ><br/ >
 
-      
       <button className='dropdown-question' onClick={handleToggleQuestions}>
         {showQuestions ? '⬆Hide⬆' : '⬇Show Preset Questions⬇'} 
       </button>
@@ -56,7 +54,7 @@ const Sidebar = ({ address}) => {
           <div className='preset-questions-item'>
             <PresetQuestion
               buttonText='What is there to do here?'
-              prompt={`Pretend you are a friend who lives in this city: ${address} and reccomend specific things to do around the neighborhood.`}
+              prompt={`Pretend you are a friend who lives in this city: ${address} and recommend specific things to do around the neighborhood.`}
               maxTokens={maxTokens}
               temperature={temperature}
             />
@@ -96,7 +94,6 @@ const Sidebar = ({ address}) => {
           </div>
         )}
       </div>
-    
       <br /><br />
       <div className='slider'>
         <p><b>Response Weirdness Scale:</b> <em>{temperature}</em></p>
@@ -108,9 +105,10 @@ const Sidebar = ({ address}) => {
           onChange={handleTemperatureChange}
         />
       </div>
-      <br /><hr />
+      <br />  <hr /> <br />
+      <h1 className='title-center'>iMessage ChatGPT</h1>
       <CustomQuestion 
-        prompt={`Pretend you are a friend who lives in this city: ${address} and recommend specific things based on this message: ${prompt}.`}
+        prompt={`Pretend you are a friend who lives in this city: ${address} and recommend specific things to do related to this question: ${prompt}.`}
       />
     </div>
   );
