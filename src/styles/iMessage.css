@@ -10,7 +10,31 @@
   max-width: 600px;
   padding: 0.5rem 1.5rem;
   overflow-y: scroll;
+  position: relative;
+}
 
+.chat-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: flex-start;
+}
+
+.chat-header img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  justify-content: flex-start;
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  justify-content: flex-start;
 }
 
 .imessage p {
@@ -29,6 +53,7 @@
   height: 1rem;
   position: absolute;
 }
+
 
 p.user-message {
   align-self: flex-end;
@@ -142,7 +167,6 @@ body {
   padding: 1rem;
   border-radius: 25px;
   border: 2px solid #c2c2c2;
-  /* background-color: #f2f2f2; */
   box-shadow: 0px 0px 10px #000000;
   width: 350px;
   height: 70vh;
@@ -151,7 +175,6 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  
 }
 
 h1 {

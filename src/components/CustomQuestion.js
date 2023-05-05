@@ -43,6 +43,10 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   return (
     <div className="container">
       <div className="imessage">
+        <div className="chat-header">
+          <img src="https://via.placeholder.com/40x40" alt="ChatGPT Profile Picture" />
+          <h2>ChatGPT</h2>
+        </div>
         <Conversation messages={conversation} />
       </div>
       <div className="input-container">
