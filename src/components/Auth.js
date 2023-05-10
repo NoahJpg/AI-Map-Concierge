@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { auth, googleProvider } from "../config/firebase"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth"
+import { auth, googleProvider } from "../config/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 
 export const useAuthentication = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

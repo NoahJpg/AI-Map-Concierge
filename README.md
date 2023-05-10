@@ -1,8 +1,8 @@
 <h1 align="center">🤖 AI Map Concierge 🗺️</h1>
   <p align="center">
     <div style="text-align:center;">
-    <img src="src/img/Map-Screenshot-3.png" 
-         alt="map-screenshot" 
+    <img src="src/img/MapScreentshot.png" 
+         alt="Map Screenshot" 
          style="display:inline-block; margin:0 auto; max-width:100%; width:max; height: auto; text-align: center;"
     />
 </div>
