@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { UseSignIn, UseSignInWithGoogle, UseSignUp, UseLogout, useAuthentication } from './Auth';
 
 const SplashScreen = ({ handleClick }) => {
@@ -10,7 +10,7 @@ const SplashScreen = ({ handleClick }) => {
   const signUp = UseSignUp(email, password);
   const signInWithGoogle = UseSignInWithGoogle();
   const logout = UseLogout();
-  
+
   const handleSignInClick = async (e) => {
     e.preventDefault();
     setButtonClicked(true);

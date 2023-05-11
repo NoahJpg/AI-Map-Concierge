@@ -53,6 +53,7 @@ code {
   text-align: center;
 }
 
+
 .search-input {
   position: absolute;
   top: 10px;
@@ -180,8 +181,6 @@ button.dropdown-question:active {
 button.dropdown-question:focus {
   outline: none;
 }
-
-
 
 /* dark mode */
 

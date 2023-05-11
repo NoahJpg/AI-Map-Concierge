@@ -17,7 +17,6 @@
   background-color: #000;
 }
 
-
 .imessage p {
   border-radius: 1.15rem;
   line-height: 1.25;
@@ -34,7 +33,6 @@
   height: 1rem;
   position: absolute;
 }
-
 
 p.user-message {
   align-self: flex-end;
