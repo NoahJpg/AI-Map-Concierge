@@ -3,6 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { Autocomplete } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
+import { LocationContext } from './LocationContext';
 import SplashScreen from './Splash';
 
 class MapContainer extends Component {  
@@ -179,7 +180,7 @@ class MapContainer extends Component {
         <Map
           google={google}
           zoom={4}
-          initialCenter={{ lat: 37.0902, lng: -95.7129 }}
+          initialCenter={{ lat: 39.0902, lng: -115.7129 }}
           mapContainerClassName="map-container"
           onClick={this.onMapClick}
           ref={this.mapRef}>
@@ -204,7 +205,6 @@ class MapContainer extends Component {
             />
           </Autocomplete>
         </Map>
-          
             <Sidebar
               className="sidebar"
               address={address}
@@ -212,6 +212,7 @@ class MapContainer extends Component {
               lng={lng}
               generatedText={this.state.generatedText}
               setGeneratedText={(text) => this.setState({ generatedText: text })}
+              handleLocation
             />
        </div>
     );
