@@ -11,6 +11,7 @@ const Sidebar = ({ address, userLocation }) => {
   const [temperature, setTemperature] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showQuestions, setShowQuestionms] = useState(false);
+  const [userAddress, setAddress] = useState("");
 
   const handleToggleQuestions = () => {
     setShowQuestionms(!showQuestions);
@@ -24,9 +25,25 @@ const Sidebar = ({ address, userLocation }) => {
     setIsDarkMode(!isDarkMode)
   }
 
-  const handleLocationButtonClick = (location) => {
-    
+  const getAddressFromLatLong = async (lat, lng) => {
+    const apiKey = process.env.REACT_APP_GMAP_KEY
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.results.length > 0) {
+        const address = data.results[0].formatted_address;
+        return address;
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
+  const handleLocationButtonClick = (location) => {
+    console.log(location)
+    getAddressFromLatLong(location.lat, location.lng);
+  }
 
   const sidebarReturn = `sidebar-wrapper${isDarkMode ? ' dark-mode' : ''}`;
   const darkModeButton = `btn-mode${isDarkMode ? ' light' : ' dark'}`;
@@ -49,9 +66,9 @@ const Sidebar = ({ address, userLocation }) => {
 
       <hr /><br/ ><br/ >
 
-      <UserLocation 
-        onLocationButtonClick={handleLocationButtonClick} 
-      />
+      <UserLocation onLocationButtonClick={handleLocationButtonClick} />
+
+      <hr /><br/ ><br/ >
 
       <button className='dropdown-question' onClick={handleToggleQuestions}>
         {showQuestions ? '⬆Hide⬆' : '⬇Show Preset Questions⬇'} 

@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
 import { LocationContext } from './LocationContext';
 import SplashScreen from './Splash';
+import UserLocation from './UserLocation';
 
 class MapContainer extends Component {  
   constructor(props) {
@@ -158,6 +159,8 @@ class MapContainer extends Component {
       console.log('Autocomplete returned null.');
     }
   };
+
+ 
 
   render() {
     const { google } = this.props;
