@@ -10,7 +10,6 @@ const temperature = 0.5;
 axios.defaults.headers.common['Authorization'] = `Bearer ${apiKey}`;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-// Generate text using OpenAI API
 const generateText = async (prompt) => {
   try {
     const response = await axios.post(`${baseURL}/engines/${engine}/completions`, {
@@ -27,9 +26,7 @@ const generateText = async (prompt) => {
   }
 };
 
-// Get generated text for a given address
 const getGeneratedText = async (address) => {
-  // Create a prompt for generating text
   const neighborhoodPrompt = `Pretend you are a friend who lives in this city ${address} and recommend things to do around the neighborhood`;
 
   try {
@@ -42,7 +39,6 @@ const getGeneratedText = async (address) => {
     });
 
     const generatedText = response.data.choices[0].text.trim();
-    console.log("GPT Text:", generatedText);
     return generatedText;
   } catch (error) {
     console.error(error);

@@ -3,14 +3,14 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import CustomQuestion from './CustomQuestion';
 import PresetQuestion from './PresetQuestion';
+import "../styles/DarkMode.css"
 
-const Sidebar = ({ address, userLocation }) => {
+const Sidebar = ({ address }) => {
   const [generatedText] = useState('');
   const [maxTokens] = useState(100);
   const [temperature, setTemperature] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showQuestions, setShowQuestionms] = useState(false);
-  const [userAddress, setAddress] = useState("");
 
   const handleToggleQuestions = () => {
     setShowQuestionms(!showQuestions);
@@ -24,30 +24,8 @@ const Sidebar = ({ address, userLocation }) => {
     setIsDarkMode(!isDarkMode)
   }
 
-  const getAddressFromLatLong = async (lat, lng) => {
-    const apiKey = process.env.REACT_APP_GMAP_KEY
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (data.results.length > 0) {
-        const address = data.results[0].formatted_address;
-        return address;
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handleLocationButtonClick = (location) => {
-    console.log(location)
-    getAddressFromLatLong(location.lat, location.lng);
-  }
-
   const sidebarReturn = `sidebar-wrapper${isDarkMode ? ' dark-mode' : ''}`;
   const darkModeButton = `btn-mode${isDarkMode ? ' light' : ' dark'}`;
-
-  console.log("temperature:", temperature)
   
   return (
     <div className={sidebarReturn}>
@@ -59,13 +37,9 @@ const Sidebar = ({ address, userLocation }) => {
       <p className={isDarkMode ? 'dark' : 'light'}>
         {generatedText}
       </p>
-  
-      <br /><hr />
+      <hr />
       <p><span className='title'>Address: </span><em>{address}</em></p>
-
-      <hr /><br/ ><br/ >
-
-      
+      <hr /><br/ >
 
       <button className='dropdown-question' onClick={handleToggleQuestions}>
         {showQuestions ? '⬆Hide⬆' : '⬇Show Preset Questions⬇'} 
@@ -121,7 +95,7 @@ const Sidebar = ({ address, userLocation }) => {
       </div>
       <br /><br />
       <div className='slider'>
-        <p><b>Response Weirdness Scale:</b> <em>{temperature}</em></p>
+        <p><b>Response Predictablity</b> <em>{temperature}</em></p>
         <RangeSlider
           value={temperature}
           min={0}

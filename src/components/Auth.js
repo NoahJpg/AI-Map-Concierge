@@ -10,8 +10,6 @@ export const useAuthentication = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsAuthenticated(!!user);
       setUser(user)
-      console.log('isAuthenticated', isAuthenticated);
-      console.log('user info', user);
     });
     return () => {
       unsubscribe();
@@ -30,7 +28,6 @@ export const UseSignUp = (email, password) => {
   const signUp = async () => {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password)
-      console.log(result)
     } catch (err) {
       alert("Check Your Email/Password")
     }

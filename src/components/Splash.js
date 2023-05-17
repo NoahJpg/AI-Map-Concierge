@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { UseSignIn, UseSignInWithGoogle, UseSignUp, UseLogout, useAuthentication } from './Auth';
+import "../styles/SplashScreen.css"
 
 const SplashScreen = ({ handleClick }) => {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ const SplashScreen = ({ handleClick }) => {
       <div className='splash-p-tags'>
         <p> - Click on the map to add a marker - or type an address.</p>
         <p> - Choose a preset question or type a custom question to generate a response from an AI.</p>
-        <p> - Change the weirdness scale to see what kind of results you can get!</p>
+        <p> - Change the Response Predictablity to see what kind of results you can get! 10 being least predictable.</p>
         <p> - Double click a marker to delete it.</p>
 
         <div className="button-container">
@@ -95,7 +96,7 @@ const SplashScreen = ({ handleClick }) => {
       
       <br />
       <p className="notice-message"><em>* Results may be inaccurate, outdated, offensive, or harmful. </em></p>
-        <p className="notice-message"><em>* Result data typically works best using locations within the USA or popular cities.</em></p>
+        <p className="notice-message"><em>* Result data is most accurate using locations within the USA or major cities.</em></p>
         <p className="copyright"> © 2023 Noah Atkinson </p>
     </div>
   );
