@@ -1,0 +1,124 @@
+/* Splash Screen */
+
+.splash-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  height: fit-content;
+  min-height: 200px;
+  max-height: 90vh;
+  font-size: .8em;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.splash-screen-button {
+  background-color: #007bff;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  border: 2px solid black;
+}
+
+.splash-screen-button:hover {
+  transform: scale(1.1);
+  color: darkgreen;
+  border: 2px solid darkgreen;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.splash-text {
+  margin: 0;
+}
+
+.splash-p-tags {
+  text-align: left;
+}
+
+.splash-screen.fade-out {
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+
+/* Splash Screen Sign in */
+.sign-in-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.sign-in-input {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  font-size: 1.0rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: border-color 0.2s ease-in-out;
+  width: fit-content;
+  max-width: 250px;
+}
+
+.sign-in-input:focus {
+  outline: none;
+  border-color: #6bb9f0;
+}
+
+.sign-in-button {
+  background-color: #007bff;
+  color: #000000;
+  margin-left: 5px;
+  margin-top: 5px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  border: 2px solid #007bff;
+  cursor: pointer;
+}
+
+.sign-in-button:hover {
+  transform: translateY(-2px);
+}
+
+.sign-in-button:active {
+  transform: translateY(1px);
+  border: 2px solid #007bff;
+}
+
+.sign-in-button:focus {
+  outline: none;
+}
+
+ .copyright {
+  color: #b17ceb;
+  font-style: italic;
+}
+.notice-message {
+  font-size: xx-small;
+}

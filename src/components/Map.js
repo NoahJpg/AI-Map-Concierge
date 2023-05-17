@@ -3,11 +3,9 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { Autocomplete } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
-import { LocationContext } from './LocationContext';
 import SplashScreen from './Splash';
-import UserLocation from './UserLocation';
 
-class MapContainer extends Component {  
+class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,6 +32,7 @@ class MapContainer extends Component {
   componentDidMount() {
     this.setState({ mapMounted: true})
     this.setState({ showSplash: true });
+    this.handleGeolocate();
   }
 
   handleClick = () => {
@@ -156,11 +155,9 @@ class MapContainer extends Component {
         isMarkerClicked: true,
       });
     } else {
-      console.log('Autocomplete returned null.');
+      console.error('Autocomplete returned null.');
     }
   };
-
- 
 
   render() {
     const { google } = this.props;
@@ -199,24 +196,23 @@ class MapContainer extends Component {
 
           <Autocomplete
             onLoad={(autocomplete) => this.autocomplete = autocomplete}
-            onPlaceChanged={() => this.onPlaceChanged(this.autocomplete)}
-          >
+            onPlaceChanged={() => this.onPlaceChanged(this.autocomplete)}>
             <input
               type="text"
               placeholder="Enter an address or click on the map"
-              className="search-input"
-            />
+              className="search-input"/>
           </Autocomplete>
         </Map>
-            <Sidebar
-              className="sidebar"
-              address={address}
-              lat={lat}
-              lng={lng}
-              generatedText={this.state.generatedText}
-              setGeneratedText={(text) => this.setState({ generatedText: text })}
-              handleLocation
-            />
+
+        <Sidebar
+          className="sidebar"
+          address={address}
+          lat={lat}
+          lng={lng}
+          generatedText={this.state.generatedText}
+          setGeneratedText={(text) => this.setState({ generatedText: text })}
+          handleGeolocate={this.handleGeolocate}/>
+
        </div>
     );
   }

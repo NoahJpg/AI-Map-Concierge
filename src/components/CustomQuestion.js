@@ -15,7 +15,6 @@ const Conversation = ({ messages }) => (
   </div>
 );
 
-
 const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
