@@ -14,7 +14,7 @@ export const useAuthentication = () => {
     return () => {
       unsubscribe();
     };
-  }, {});
+  }, []);
 
   return {
     isAuthenticated,
@@ -27,7 +27,7 @@ export const UseSignUp = (email, password) => {
 
   const signUp = async () => {
     try {
-      const result = await createUserWithEmailAndPassword(auth, email, password)
+      await createUserWithEmailAndPassword(auth, email, password)
     } catch (err) {
       alert("Check Your Email/Password")
     }
@@ -39,7 +39,7 @@ export const UseSignIn = (email, password) => {
 
   const signIn = async () => {
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, email, password)
     } catch (err) {
       alert("Check Your Login Information") 
     }
@@ -48,12 +48,9 @@ export const UseSignIn = (email, password) => {
 };
 
 export const UseSignInWithGoogle = () => {
-  const [user, setUser] = useState(null);
-
   const signInWithGoogle = async () => {
     try {
-      const result = await signInWithPopup(auth, googleProvider)
-      setUser(result.user);
+      await signInWithPopup(auth, googleProvider)
     } catch (err) {
       alert("Something is wrong with your Google Account")
     }
