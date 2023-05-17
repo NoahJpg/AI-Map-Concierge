@@ -43,7 +43,7 @@ const UserLocation = ({ onLocationButtonClick }) => {
       <button onClick={handleLocationButtonClick}>Find Your Location</button>
         {currentLocation && (
           <p>
-            Current Location: {currentLocation.lat}, {currentLocation.lng}
+            
           </p>
         )}
         

@@ -60,15 +60,15 @@ const Sidebar = ({ address, userLocation }) => {
       <p className={isDarkMode ? 'dark' : 'light'}>
         {generatedText}
       </p>
+
+      {/* <UserLocation onLocationButtonClick={handleLocationButtonClick} /> */}
   
-      <hr />
+      <br /><hr />
       <p><span className='title'>Address: </span><em>{address}</em></p>
 
       <hr /><br/ ><br/ >
 
-      <UserLocation onLocationButtonClick={handleLocationButtonClick} />
-
-      <hr /><br/ ><br/ >
+      
 
       <button className='dropdown-question' onClick={handleToggleQuestions}>
         {showQuestions ? '⬆Hide⬆' : '⬇Show Preset Questions⬇'} 

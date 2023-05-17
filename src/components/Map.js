@@ -3,9 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { Autocomplete } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
-import { LocationContext } from './LocationContext';
 import SplashScreen from './Splash';
-import UserLocation from './UserLocation';
 
 class MapContainer extends Component {  
   constructor(props) {
@@ -34,6 +32,7 @@ class MapContainer extends Component {
   componentDidMount() {
     this.setState({ mapMounted: true})
     this.setState({ showSplash: true });
+    this.handleGeolocate();
   }
 
   handleClick = () => {
@@ -160,8 +159,6 @@ class MapContainer extends Component {
     }
   };
 
- 
-
   render() {
     const { google } = this.props;
     const { markers, mapMounted, lat, lng, address, showSplash, fadeOut} = this.state;
@@ -215,7 +212,7 @@ class MapContainer extends Component {
               lng={lng}
               generatedText={this.state.generatedText}
               setGeneratedText={(text) => this.setState({ generatedText: text })}
-              handleLocation
+              handleGeolocate={this.handleGeolocate}
             />
        </div>
     );
