@@ -3,11 +3,12 @@
   border: 1px solid #e5e5ea;
   border-radius: 0.25rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   font-family: "SanFrancisco";
   font-size: 1.25rem; 
   margin: 0 auto 1rem;
   max-width: 600px;
+  max-height: 400px;
   padding: 0.5rem 1.5rem 1.5rem;
   overflow-y: scroll;
   position: relative;
@@ -142,18 +143,38 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 300px;
+  max-width: 250px;
+  max-height: 370px;
   padding: 1rem;
   border-radius: 25px;
   border: 2px solid #c2c2c2;
   box-shadow: 0px 0px 10px #000000;
   width: 350px;
-  height: 70vh;
+  min-height: 300px;
+  height: fit-content;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
+}
+
+.custom-question {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  color: black;
+  background-color: transparent;
+  font-size: 1.0rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: border-color 0.2s ease-in-out;
+  width: 500px;
+  max-width: fit-content;
+  max-height: fit-content;
+}
+
+.dark-mode .custom-question {
+  color: white;
 }
 
 h1 {

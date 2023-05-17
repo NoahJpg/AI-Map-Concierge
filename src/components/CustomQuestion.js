@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { generateText } from "./ChatGPT";
 import "../styles/iMessage.css";
 
-const Conversation = ({ messages }) => (
+const Conversation = ({ messages, messagesEndRef }) => (
   <div className="conversation">
     {messages.map(({ text, isUser }, i) => (
       <div
@@ -12,6 +12,7 @@ const Conversation = ({ messages }) => (
         {text}
       </div>
     ))}
+    {/* <div ref={messagesEndRef} /> */}
   </div>
 );
 
@@ -20,6 +21,13 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [generatedText, setGeneratedText] = useState("");
   const [conversation, setConversation] = useState([]);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [conversation]);
 
   const handleUserInputSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +50,7 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   return (
     <div className="container">
       <div className="imessage">
-        <Conversation messages={conversation} />
+        <Conversation messages={conversation} messagesEndRef={messagesEndRef} />
         {isLoading && (
           <p className="loading-container">
             ...

@@ -26,6 +26,7 @@ const Sidebar = ({ address }) => {
 
   const sidebarReturn = `sidebar-wrapper${isDarkMode ? ' dark-mode' : ''}`;
   const darkModeButton = `btn-mode${isDarkMode ? ' light' : ' dark'}`;
+
   
   return (
     <div className={sidebarReturn}>

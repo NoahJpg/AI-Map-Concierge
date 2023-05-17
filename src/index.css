@@ -34,6 +34,7 @@ code {
   border-radius: 10px;
   box-shadow: 0px 0px 10px #CCCCCC;
   width: 360px;
+  min-height: 400px;
   height: fit-content;
   z-index: 1;
   overflow-y: auto;
@@ -69,23 +70,7 @@ code {
   outline: none;
 }
 
-.custom-question {
-  border: none;
-  border-bottom: 2px solid #ccc;
-  color: black;
-  background-color: transparent;
-  font-size: 1.0rem;
-  padding: 10px;
-  margin-bottom: 20px;
-  transition: border-color 0.2s ease-in-out;
-  width: 500px;
-  max-width: 250px;
-  max-height: fit-content;
-}
 
-.dark-mode .custom-question {
-  color: white;
-}
 
 .preset-questions-item:hover {
   transform: translateY(0px);
