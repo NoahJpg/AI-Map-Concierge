@@ -3,7 +3,6 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import CustomQuestion from './CustomQuestion';
 import PresetQuestion from './PresetQuestion';
-import UserLocation from './UserLocation';
 
 const Sidebar = ({ address, userLocation }) => {
   const [generatedText] = useState('');
@@ -60,8 +59,6 @@ const Sidebar = ({ address, userLocation }) => {
       <p className={isDarkMode ? 'dark' : 'light'}>
         {generatedText}
       </p>
-
-      {/* <UserLocation onLocationButtonClick={handleLocationButtonClick} /> */}
   
       <br /><hr />
       <p><span className='title'>Address: </span><em>{address}</em></p>
