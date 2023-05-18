@@ -4,6 +4,7 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import CustomQuestion from './CustomQuestion';
 import PresetQuestion from './PresetQuestion';
 import "../styles/DarkMode.css"
+import "../styles/Sidebar.css"
 
 const Sidebar = ({ address }) => {
   const [generatedText] = useState('');
@@ -94,9 +95,9 @@ const Sidebar = ({ address }) => {
           </div>
         )}
       </div>
-      <br /><br />
+      <br /><br /> <hr />
       <div className='slider'>
-        <p><b>Response Predictablity</b> <em>{temperature}</em></p>
+        <p><b>Response Unpredictablity</b> <em>{temperature}</em></p>
         <RangeSlider
           value={temperature}
           min={0}
@@ -106,7 +107,7 @@ const Sidebar = ({ address }) => {
         />
       </div>
      
-      <br />  <hr /> <br />
+      <br />  <br />
       <h1 className='title-center'>iMessage ChatGPT</h1>
       <CustomQuestion 
         prompt={`Pretend you are a friend who lives in this city:${address} and respond to this question in a helpful way ${prompt}.`}

@@ -1,0 +1,16 @@
+.sidebar-wrapper {
+  position: relative;
+  background-color: #FAFAFA;
+  color: #444444;
+  padding: 20px;
+  margin: 100px 20px 20px 20px;
+  border: 1px solid #CCCCCC;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #CCCCCC;
+  width: 360px;
+  min-height: 400px;
+  height: fit-content;
+  z-index: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}

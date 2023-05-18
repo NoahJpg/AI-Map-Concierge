@@ -40,7 +40,7 @@ const SplashScreen = ({ handleClick }) => {
       <div className='splash-p-tags'>
         <p> - Click on the map to add a marker - or type an address.</p>
         <p> - Choose a preset question or type a custom question to generate a response from an AI.</p>
-        <p> - Change the Response Predictablity to see what kind of results you can get! 10 being least predictable.</p>
+        <p> - Change the Response Unpredictablity to see what kind of results you can get!</p>
         <p> - Double click a marker to delete it.</p>
 
         <div className="button-container">
