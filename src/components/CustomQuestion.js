@@ -7,7 +7,9 @@ const Conversation = ({ messages, messagesEndRef }) => (
     {messages.map(({ text, isUser }, i) => (
       <div
         key={i}
-        className={isUser ? "user-message message" : "generated-message message"}
+        className={
+          isUser ? "user-message message" : "generated-message message"
+        }
       >
         {text}
       </div>
@@ -32,7 +34,11 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   const handleUserInputSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const response = await generateText(`${prompt}${userInput}?`, maxTokens, temperature);
+    const response = await generateText(
+      `${prompt}${userInput}?`,
+      maxTokens,
+      temperature
+    );
     setConversation([
       ...conversation,
       { text: userInput, isUser: true },
@@ -51,11 +57,7 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
     <div className="container">
       <div className="imessage">
         <Conversation messages={conversation} messagesEndRef={messagesEndRef} />
-        {isLoading && (
-          <p className="loading-container">
-            ...
-          </p>
-        )}
+        {isLoading && <p className="loading-container">...</p>}
       </div>
       <div className="input-container">
         <form onSubmit={handleUserInputSubmit}>
@@ -67,8 +69,11 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
             value={userInput}
             required
           />
-          <button onClick={handleUserInputSubmit} className="send-button imessage-send-button">
-          ⇧
+          <button
+            onClick={handleUserInputSubmit}
+            className="send-button imessage-send-button"
+          >
+            ⇧
           </button>
         </form>
       </div>

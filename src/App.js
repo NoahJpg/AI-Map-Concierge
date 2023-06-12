@@ -1,16 +1,13 @@
-import Map from './components/Map';
-import React from 'react';
-
+import Map from "./components/Map";
+import React from "react";
 
 function App() {
   return (
-    
-    <div className='App'>
+    <div className="App">
       <React.Fragment>
         <Map />
       </React.Fragment>
     </div>
-    
   );
 }
 

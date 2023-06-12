@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { Autocomplete } from '@react-google-maps/api';
-import Sidebar from './Sidebar';
-import { getGeneratedText } from './ChatGPT';
-import SplashScreen from './Splash';
-import { FootTrafficData } from './FootTrafficData';
+import React, { Component } from "react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { Autocomplete } from "@react-google-maps/api";
+import Sidebar from "./Sidebar";
+import { getGeneratedText } from "./ChatGPT";
+import SplashScreen from "./Splash";
+import { FootTrafficData } from "./FootTrafficData";
 
 class MapContainer extends Component {
   constructor(props) {
@@ -31,15 +31,15 @@ class MapContainer extends Component {
   }
 
   componentDidMount() {
-    this.setState({ mapMounted: true})
+    this.setState({ mapMounted: true });
     this.setState({ showSplash: true });
     this.handleGeolocate();
   }
 
   handleClick = () => {
     this.setState({ fadeOut: true });
-    this.setState({ showSplash: false })
-  }
+    this.setState({ showSplash: false });
+  };
 
   handleGeolocate() {
     if (navigator.geolocation) {
@@ -61,11 +61,11 @@ class MapContainer extends Component {
           this.getAddressFromLatLong(lat, lng);
         },
         () => {
-          alert('Could not get your location.');
+          alert("Could not get your location.");
         }
       );
     } else {
-      alert('Geolocation is not supported by this browser.');
+      alert("Geolocation is not supported by this browser.");
     }
   }
 
@@ -74,12 +74,12 @@ class MapContainer extends Component {
       lat: clickEvent.latLng.lat(),
       lng: clickEvent.latLng.lng(),
     };
-    this.setState({ 
-      markers: [...this.state.markers, newMarker], 
-      lat: newMarker.lat, 
+    this.setState({
+      markers: [...this.state.markers, newMarker],
+      lat: newMarker.lat,
       lng: newMarker.lng,
       isMarkerClicked: true,
-      selectedPlace: {}
+      selectedPlace: {},
     });
 
     this.getAddressFromLatLong(newMarker.lat, newMarker.lng);
@@ -89,31 +89,33 @@ class MapContainer extends Component {
     const marker = this.state.markers[index];
     this.setState({
       activeMarker: marker,
-      selectedPlace: { props: { index}},
+      selectedPlace: { props: { index } },
     });
-    this.deleteMarker()
-  }
- 
+    this.deleteMarker();
+  };
+
   deleteMarker = () => {
     const markers = [...this.state.markers];
-    const index = markers.findIndex((marker) => marker === this.state.activeMarker);
-    if (index !== -1 ) {
+    const index = markers.findIndex(
+      (marker) => marker === this.state.activeMarker
+    );
+    if (index !== -1) {
       markers.splice(index, 1);
       this.setState({
         markers: markers,
         activeMarker: null,
       });
     }
-  }
+  };
 
   handleGenerateText = async () => {
     const { address } = this.state;
     const response = await getGeneratedText(address);
     this.setState({ generatedText: response });
-  }
+  };
 
   getAddressFromLatLong = async (lat, lng) => {
-    const apiKey = process.env.REACT_APP_GMAP_KEY
+    const apiKey = process.env.REACT_APP_GMAP_KEY;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
 
     try {
@@ -156,20 +158,21 @@ class MapContainer extends Component {
         isMarkerClicked: true,
       });
     } else {
-      console.error('Autocomplete returned null.');
+      console.error("Autocomplete returned null.");
     }
   };
 
   render() {
     const { google } = this.props;
-    const { markers, mapMounted, lat, lng, address, showSplash, fadeOut} = this.state;
+    const { markers, mapMounted, lat, lng, address, showSplash, fadeOut } =
+      this.state;
 
     if (showSplash) {
       return (
-        <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
+        <div className={`splash-screen ${fadeOut ? "fade-out" : ""}`}>
           <SplashScreen handleClick={this.handleClick} />
         </div>
-      )
+      );
     }
 
     if (!mapMounted) {
@@ -177,31 +180,33 @@ class MapContainer extends Component {
     }
 
     return (
-      <div className='map-wrapper'>
+      <div className="map-wrapper">
         <Map
           google={google}
           zoom={4}
           initialCenter={{ lat: 39.0902, lng: -115.7129 }}
           mapContainerClassName="map-container"
           onClick={this.onMapClick}
-          ref={this.mapRef}>
-            
+          ref={this.mapRef}
+        >
           {markers.map((marker, index) => (
-            <Marker 
-              key={index} 
-              position={{lat: marker.lat, lng: marker.lng}} 
+            <Marker
+              key={index}
+              position={{ lat: marker.lat, lng: marker.lng }}
               onClick={() => this.onMarkerClick(index)}
-              index={index}>          
-            </Marker>
+              index={index}
+            ></Marker>
           ))}
 
           <Autocomplete
-            onLoad={(autocomplete) => this.autocomplete = autocomplete}
-            onPlaceChanged={() => this.onPlaceChanged(this.autocomplete)}>
+            onLoad={(autocomplete) => (this.autocomplete = autocomplete)}
+            onPlaceChanged={() => this.onPlaceChanged(this.autocomplete)}
+          >
             <input
               type="text"
               placeholder="Enter an address or click on the map"
-              className="search-input"/>
+              className="search-input"
+            />
           </Autocomplete>
         </Map>
 
@@ -212,13 +217,13 @@ class MapContainer extends Component {
           lng={lng}
           generatedText={this.state.generatedText}
           setGeneratedText={(text) => this.setState({ generatedText: text })}
-          handleGeolocate={this.handleGeolocate}/>
-        <FootTrafficData />
-       </div>
+          handleGeolocate={this.handleGeolocate}
+        />
+      </div>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GMAP_KEY
+  apiKey: process.env.REACT_APP_GMAP_KEY,
 })(MapContainer);
