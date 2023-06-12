@@ -4,6 +4,7 @@ import { Autocomplete } from '@react-google-maps/api';
 import Sidebar from './Sidebar';
 import { getGeneratedText } from './ChatGPT';
 import SplashScreen from './Splash';
+import { FootTrafficData } from './FootTrafficData';
 
 class MapContainer extends Component {
   constructor(props) {
@@ -212,7 +213,7 @@ class MapContainer extends Component {
           generatedText={this.state.generatedText}
           setGeneratedText={(text) => this.setState({ generatedText: text })}
           handleGeolocate={this.handleGeolocate}/>
-
+        <FootTrafficData />
        </div>
     );
   }
