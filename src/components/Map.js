@@ -7,6 +7,7 @@ import SplashScreen from "./Splash";
 import { FootTrafficData } from "./FootTrafficData";
 
 class MapContainer extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -14,16 +15,6 @@ class MapContainer extends Component {
       mapMounted: false,
       lat: null,
       lng: null,
-      address: null,
-      activeMarker: null,
-      previousMarker: null,
-      showInfoWindow: false,
-      selectedPlace: { props: {} },
-      isMarkerClicked: false,
-      generatedText: null,
-      place: null,
-      showSplash: true,
-      fadeOut: false,
     };
     this.mapRef = React.createRef();
 
@@ -179,6 +170,9 @@ class MapContainer extends Component {
       return "Loading...";
     }
 
+  const encodedAddress = encodeURIComponent(address);
+  console.log("encoded address:", encodedAddress)
+
     return (
       <div className="map-wrapper">
         <Map
@@ -210,15 +204,14 @@ class MapContainer extends Component {
           </Autocomplete>
         </Map>
 
-        <Sidebar
-          className="sidebar"
-          address={address}
-          lat={lat}
-          lng={lng}
-          generatedText={this.state.generatedText}
-          setGeneratedText={(text) => this.setState({ generatedText: text })}
-          handleGeolocate={this.handleGeolocate}
-        />
+          {lat && lng && (
+            <WalkScore 
+              lat={lat}
+              lng={lng}
+              address={address}
+            />
+          )}
+
       </div>
     );
   }
