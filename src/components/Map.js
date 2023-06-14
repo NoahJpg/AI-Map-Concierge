@@ -7,7 +7,6 @@ import SplashScreen from "./Splash";
 import { FootTrafficData } from "./FootTrafficData";
 
 class MapContainer extends Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +14,16 @@ class MapContainer extends Component {
       mapMounted: false,
       lat: null,
       lng: null,
+      address: null,
+      activeMarker: null,
+      previousMarker: null,
+      showInfoWindow: false,
+      selectedPlace: { props: {} },
+      isMarkerClicked: false,
+      generatedText: null,
+      place: null,
+      showSplash: true,
+      fadeOut: false,
     };
     this.mapRef = React.createRef();
 
@@ -76,7 +85,6 @@ class MapContainer extends Component {
     this.getAddressFromLatLong(newMarker.lat, newMarker.lng);
   };
 
-<<<<<<< HEAD
   onMarkerClick = (index) => {
     const marker = this.state.markers[index];
     this.setState({
@@ -85,15 +93,6 @@ class MapContainer extends Component {
     });
     this.deleteMarker();
   };
-=======
-  getAddressFromLatLong = async (lat, lng) => {
-<<<<<<< HEAD
-    const apiKey = "process.env.REACT_APP_GMAP_KEY"
-=======
-    const apiKey = "AIzaSyDcuIlFK46ovUX1gU8KvqjqYYVPOrHMbRU"
->>>>>>> fc4f3c0 (successfully generate an address based on coordinates of click)
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
->>>>>>> 13e79a7 (fix api)
 
   deleteMarker = () => {
     const markers = [...this.state.markers];
@@ -116,7 +115,7 @@ class MapContainer extends Component {
   };
 
   getAddressFromLatLong = async (lat, lng) => {
-    const apiKey = "AIzaSyDcuIlFK46ovUX1gU8KvqjqYYVPOrHMbRU"
+    const apiKey = process.env.REACT_APP_GMAP_KEY;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
 
     try {
@@ -180,9 +179,6 @@ class MapContainer extends Component {
       return "Loading...";
     }
 
-  const encodedAddress = encodeURIComponent(address);
-  console.log("encoded address:", encodedAddress)
-
     return (
       <div className="map-wrapper">
         <Map
@@ -214,27 +210,20 @@ class MapContainer extends Component {
           </Autocomplete>
         </Map>
 
-          {lat && lng && (
-            <WalkScore 
-              lat={lat}
-              lng={lng}
-<<<<<<< HEAD
-              address={address}
-=======
-<<<<<<< HEAD
-              address={encodedAddress}
-=======
-              address={address}
->>>>>>> fc4f3c0 (successfully generate an address based on coordinates of click)
->>>>>>> 13e79a7 (fix api)
-            />
-          )}
-
+        <Sidebar
+          className="sidebar"
+          address={address}
+          lat={lat}
+          lng={lng}
+          generatedText={this.state.generatedText}
+          setGeneratedText={(text) => this.setState({ generatedText: text })}
+          handleGeolocate={this.handleGeolocate}
+        />
       </div>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyDcuIlFK46ovUX1gU8KvqjqYYVPOrHMbRU"
+  apiKey: process.env.REACT_APP_GMAP_KEY,
 })(MapContainer);
