@@ -35,7 +35,7 @@
 
 
 ## Description
-#### _A web app that integrates Chat AI on a Map to help you learn about wherever you click._
+#### _AI Map Concierge is a web app designed and developed by a solo innovator. The app merges advanced Chat AI with interactive mapping to provide real-time, location-specific insights. It offers various features like a custom question form, preset buttons for common inquiries, adjustable AI response settings, and secure user authentication. Whether it's for tourists seeking information, new residents learning about their area, or the naturally curious exploring globally, AI Map Concierge strives to make geographic knowledge accessible and personalized._
 
 ## Run It Here
 
