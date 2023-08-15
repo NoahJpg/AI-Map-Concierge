@@ -3,7 +3,7 @@
   border: 1px solid #e5e5ea;
   border-radius: 0.25rem;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   font-family: "SanFrancisco";
   font-size: 1.25rem; 
   margin: 0 auto 1rem;
@@ -234,12 +234,13 @@ h2 {
   align-self: flex-end;
   background-color: #007aff;
   color: #fff;
-  margin-right: 1rem;
 }
 
 .generated-message {
   align-self: flex-start;
   background-color: #e5e5ea;
   color: #000;
-  margin-left: 1rem;
+}
+.user-message, .generated-message {
+  font-size: 0.7rem;
 }

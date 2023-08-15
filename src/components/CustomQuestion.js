@@ -14,7 +14,7 @@ const Conversation = ({ messages, messagesEndRef }) => (
         {text}
       </div>
     ))}
-    {/* <div ref={messagesEndRef} /> */}
+    <div ref={messagesEndRef} />
   </div>
 );
 
@@ -34,6 +34,8 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   const handleUserInputSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setConversation([...conversation, { text: userInput, isUser: true }]);
+    scrollToBottom();
     const response = await generateText(
       `${prompt}${userInput}?`,
       maxTokens,
@@ -47,6 +49,7 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
     setGeneratedText(response);
     setUserInput("");
     setIsLoading(false);
+    scrollToBottom();
   };
 
   const handleUserInputChange = (e) => {

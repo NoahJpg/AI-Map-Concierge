@@ -41,25 +41,13 @@ const SplashScreen = ({ handleClick }) => {
 
   return (
     <div>
-      <h1>🤖 Welcome to the AI Map Concierge! 🗺️ </h1>
-      <h3>
-        This app allows you to AI-Generate information about any location on the
-        map.
-      </h3>
+      <h1>🤖 AI Map Helper 🗺️</h1>
+      <h3>Learn about places using AI!</h3>
       <div className="splash-p-tags">
-        <p> - Click on the map to add a marker - or type an address.</p>
-        <p>
-          {" "}
-          - Choose a preset question or type a custom question to generate a
-          response from an AI.
-        </p>
-        <p>
-          {" "}
-          - Change the Response Unpredictablity to see what kind of results you
-          can get!
-        </p>
-        <p> - Double click a marker to delete it.</p>
-
+        <p>📍 Click or type to mark an address.</p>
+        <p>🔍 Ask a question - or pick one we suggest.</p>
+        <p>🎲 Adjust how the AI answers for fun results!</p>
+        <p>❌ Double click a spot to remove it.</p>
         <div className="button-container">
           {isAuthenticated ? (
             <button onClick={handleClick} className="splash-screen-button">
@@ -74,10 +62,12 @@ const SplashScreen = ({ handleClick }) => {
           )}
         </div>
       </div>
+
+      <hr className="separator-line" />
+
       <div className="sign-in-wrapper">
         {isAuthenticated ? (
           <p>
-            {" "}
             Signed in as: <em>{user?.email}</em>
           </p>
         ) : (

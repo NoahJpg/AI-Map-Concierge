@@ -51,7 +51,7 @@ const Sidebar = ({ address }) => {
             <div className="preset-questions-item">
               <PresetQuestion
                 buttonText="What is there to do here?"
-                prompt={`Pretend you are a friend who lives in this city: ${address} and recommend specific things to do around the neighborhood.`}
+                prompt={`Pretend you are a friend who lives in this city: ${address} and recommend specific things to do around the neighborhood. Keep it concise.`}
                 maxTokens={maxTokens}
                 temperature={temperature}
               />
@@ -59,7 +59,7 @@ const Sidebar = ({ address }) => {
             <div className="preset-questions-item">
               <PresetQuestion
                 buttonText="What is the weather like here?"
-                prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area for each season.`}
+                prompt={`Pretend you are a friend who lives in this city: ${address} and describe the weather in the area for each season. Keep it concise.`}
                 maxTokens={maxTokens}
                 temperature={temperature}
               />
@@ -67,7 +67,7 @@ const Sidebar = ({ address }) => {
             <div className="preset-questions-item">
               <PresetQuestion
                 buttonText="What is the Walk Score®?"
-                prompt={`Pretend you are a friend who lives in this city: ${address} and tell them the Walk Score and explain what the score means. Then tell them the Transit Score, and Bike Score.`}
+                prompt={`Pretend you are a friend who lives in this city: ${address} and tell them the Walk Score and explain what the score means. Then tell them the Transit Score, and Bike Score. Keep it concise.`}
                 maxTokens={maxTokens}
                 temperature={temperature}
               />
@@ -75,7 +75,7 @@ const Sidebar = ({ address }) => {
             <div className="preset-questions-item">
               <PresetQuestion
                 buttonText="What are the best restaurants?"
-                prompt={`Pretend you are a friend who lives in this city: ${address} and briefly tell them the top 3 restaurants in the area.`}
+                prompt={`Pretend you are a friend who lives in this city: ${address} and briefly tell them the top 3 restaurants in the area. Keep it concise.`}
                 maxTokens={maxTokens}
                 temperature={temperature}
               />
@@ -83,7 +83,7 @@ const Sidebar = ({ address }) => {
             <div className="preset-questions-item">
               <PresetQuestion
                 buttonText="Recommendations for date night?"
-                prompt={`Pretend you are a friend who lives in this city: ${address} and create the perfect date night for them specific to this location. Recommend a romantic restaurant, a nice activity, and a specific place to go if they want to stay out.`}
+                prompt={`Pretend you are a friend who lives in this city: ${address} and create the perfect date night for them specific to this location. Recommend a romantic restaurant, a nice activity, and a specific place to go if they want to stay out. Keep it concise.`}
                 maxTokens={maxTokens}
                 temperature={temperature}
               />
@@ -106,9 +106,9 @@ const Sidebar = ({ address }) => {
         />
       </div>
       <br /> <br />
-      <h1 className="title-center">iMessage ChatGPT</h1>
+      <h1 className="title-center">AiMessage</h1>
       <CustomQuestion
-        prompt={`Pretend you are a friend who lives in this city:${address} and respond to this question in a helpful way ${prompt}.`}
+        prompt={`You are someone who knows a lot about this place:${address}. ${prompt} This message comes from your friend. Be a helpful concierege. If they refer to 'here' it is in reference to this place:${address}. If you repeat the address, omit the city, state, country, and zip code.`}
         temperature={temperature}
         n={5}
       />

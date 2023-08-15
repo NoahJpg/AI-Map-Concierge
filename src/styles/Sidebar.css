@@ -1,16 +1,21 @@
 .sidebar-wrapper {
+  /* Positioning */
   position: relative;
-  background-color: #FAFAFA;
-  color: #444444;
-  padding: 20px;
-  margin: 100px 20px 20px 20px;
-  border: 1px solid #CCCCCC;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px #CCCCCC;
-  width: 360px;
-  min-height: 400px;
-  height: fit-content;
   z-index: 1;
+
+  /* Size and Spacing */
+  width: 300px;          /* Reduced width for more space */
+  padding: 15px;         /* Slightly reduced padding */
+  margin: 70px 15px;     /* Reduced top margin and uniform horizontal margin */
+  max-height: calc(100vh - 140px);  /* Adjusting according to the reduced margin */
   overflow-y: auto;
-  max-height: calc(100vh - 200px);
+
+  /* Colors */
+  background-color: #FFFFFF;
+  color: #333333;
+  border: 1px solid #E0E0E0;
+
+  /* Shapes and Shadows */
+  border-radius: 12px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }

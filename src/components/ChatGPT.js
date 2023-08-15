@@ -2,8 +2,8 @@ import axios from "axios";
 
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 const baseURL = "https://api.openai.com/v1";
-const engine = "text-davinci-002";
-const maxTokens = 100;
+const engine = "text-davinci-003";
+const maxTokens = 200;
 const numCompletions = 3;
 const temperature = 0.5;
 
