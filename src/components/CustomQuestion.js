@@ -22,7 +22,9 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [generatedText, setGeneratedText] = useState("");
-  const [conversation, setConversation] = useState([]);
+  const [conversation, setConversation] = useState([
+    { text: "How can I help you?", isUser: false }
+  ]);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
