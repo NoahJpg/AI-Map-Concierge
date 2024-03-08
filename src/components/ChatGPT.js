@@ -30,7 +30,7 @@ const generateText = async (prompt) => {
 };
 
 const getGeneratedText = async (address) => {
-  const neighborhoodPrompt = `Pretend you are a friend who lives in this city ${address} and recommend things to do around the neighborhood`;
+  const neighborhoodPrompt = `Pretend you are a friend who is very familiar with this area and neighborhood ${address} and recommend things to do around the neighborhood`;
 
   try {
     const response = await axios.post(
