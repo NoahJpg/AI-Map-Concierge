@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 const baseURL = "https://api.openai.com/v1";
-const engine = "text-davinci-003";
+const engine = "gpt-3.5-turbo-instruct";
 const maxTokens = 200;
 const numCompletions = 3;
 const temperature = 0.5;
