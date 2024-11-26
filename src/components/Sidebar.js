@@ -5,7 +5,6 @@ import CustomQuestion from "./CustomQuestion";
 import PresetQuestion from "./PresetQuestion";
 import "../styles/DarkMode.css";
 import "../styles/Sidebar.css";
-import useShouldShowSidebar from "../hooks/useShouldShowSideBar";
 
 const Sidebar = ({ address }) => {
   const [maxTokens] = useState(75);
@@ -68,9 +67,7 @@ const Sidebar = ({ address }) => {
     ];
   }
 
-  const shouldShowSidebar = useShouldShowSidebar();
-
-  return shouldShowSidebar ? (
+  return (
     <div className={sidebarReturn}>
       <div className="button-container">
         <button className={darkModeButton} onClick={handleToggleDarkMode}>
@@ -142,7 +139,7 @@ const Sidebar = ({ address }) => {
         n={5}
       />
     </div>
-  ) : null;
+  );
 };
 
 export default Sidebar;
