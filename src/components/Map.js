@@ -4,7 +4,6 @@ import { Autocomplete } from "@react-google-maps/api";
 import Sidebar from "./Sidebar";
 import { getGeneratedText } from "./ChatGPT";
 import SplashScreen from "./Splash";
-import { FootTrafficData } from "./FootTrafficData";
 
 class MapContainer extends Component {
   constructor(props) {
@@ -75,7 +74,7 @@ class MapContainer extends Component {
       lng: clickEvent.latLng.lng(),
     };
     this.setState({
-      markers: [...this.state.markers, newMarker],
+      markers: [newMarker],
       lat: newMarker.lat,
       lng: newMarker.lng,
       isMarkerClicked: true,
@@ -141,12 +140,12 @@ class MapContainer extends Component {
       const address = place.formatted_address;
 
       const map = this.mapRef.current.map;
-      const marker = new this.props.google.maps.Marker({
+      new this.props.google.maps.Marker({
         map,
         position: newMarker,
       });
       map.setCenter(newMarker);
-      map.setZoom(12);
+      map.setZoom(13);
 
       this.setState({
         markers: [newMarker],

@@ -19,11 +19,12 @@ const Conversation = ({ messages, messagesEndRef }) => (
 );
 
 const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
+  const initialAIMessage =
+    "I'm here to help you find places to eat, things to see, and help you discover more about where you are or where you want to go!";
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [generatedText, setGeneratedText] = useState("");
   const [conversation, setConversation] = useState([
-    { text: "How can I help you?", isUser: false }
+    { text: initialAIMessage, isUser: false },
   ]);
   const messagesEndRef = useRef(null);
 
@@ -48,7 +49,6 @@ const CustomQuestion = ({ prompt, maxTokens, temperature }) => {
       { text: userInput, isUser: true },
       { text: response, isUser: false },
     ]);
-    setGeneratedText(response);
     setUserInput("");
     setIsLoading(false);
     scrollToBottom();

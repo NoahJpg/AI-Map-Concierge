@@ -33,14 +33,14 @@ code {
 .title-center {
   font-weight: bold;
   color: #0053c7;
-  margin-top: 0;
+  margin-bottom: -50px;
   text-align: center;
 }
 
 .search-input {
   position: absolute;
   top: 10px;
-  left: 50%;
+  left: 60%;
   transform: translateX(-50%);
   z-index: 1;
   width: 240px;
