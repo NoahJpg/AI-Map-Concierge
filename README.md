@@ -33,53 +33,46 @@
     <a href="#license">🪪 License 🪪</a>
   </p>
 
-
 ## Description
+
 #### _AI Map Concierge is a web app designed and developed by a solo innovator. The app merges advanced Chat AI with interactive mapping to provide real-time, location-specific insights. It offers various features like a custom question form, preset buttons for common inquiries, adjustable AI response settings, and secure user authentication. Whether it's for tourists seeking information, new residents learning about their area, or the naturally curious exploring globally, AI Map Concierge strives to make geographic knowledge accessible and personalized._
 
 ## Run It Here
 
-  [Live project](https://livable-app.vercel.app/)
+[Live project](https://livable-app.vercel.app/)
 
 ## Features
 
-* _Satelite Map Mode, add and remove labels_
-* _Terrain Map Mode_
-* _Custom Question Form that returns unique responses from AI_
-* _Preset Buttons with engineered responses that answer common questions for tourists, new residents, and anyone curious!_
-* _Advanced settings allowing you to generate shorter/longer respones_
-* _Advanced settings allowing you to change Chat GPT "Temperature" which determines how unpredicatable the response is_
-* _Dark Mode/Light Mode Button for the sidebar_
-* _User Authentication required with custom email/ password or Google account login_
-
-### Research & Planning Log
-#### Friday, 05/05
-
-* 8:20: research ways to improve the app
-* 8:50: read about react native
+- _Satellite Map Mode, add and remove labels_
+- _Terrain Map Mode_
+- _Custom Question Form that returns unique responses from AI_
+- _Preset Buttons with engineered responses that answer common questions for tourists, new residents, and anyone curious!_
+- _Advanced settings allowing you to change length of response_
+- _Advanced settings allowing you to change Chat GPT "Temperature" which determines how unpredictable the response is_
+- _Dark Mode/Light Mode Button for the sidebar_
+- _User Authentication required with custom email/ password or Google account login_
 
 ## Technologies Used
 
-* _React_
-* _Bootstrap_
-* _React-Google-Maps-API_
-* _Axios_
-* _Text Davinci 003_
-* _OpenAI_
-* _Firebase_
-* _Express_
-* _Node-Fetch_
-* _Eslint_
+- _React_
+- _Bootstrap_
+- _React-Google-Maps-API_
+- _Axios_
+- _Gpt-3.5-turbo-instruct_
+- _OpenAI_
+- _Firebase_
+- _Express_
+- _Node_
+- _Eslint_
+- _cSpell_
 
-## Setup and Installation Requirements
+## Run the project
 
-  [Live project here](https://livable-app.vercel.app/)
-
-* _TBD_
+[Live project here](https://livable-app.vercel.app/)
 
 ## Known Bugs
 
-* _None_
+- _None_
 
 ## License
 
@@ -106,6 +99,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 </details>
 <br />
 Copyright (c) 2023 Noah Atkinson
