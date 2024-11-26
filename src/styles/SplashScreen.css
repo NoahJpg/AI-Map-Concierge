@@ -43,7 +43,8 @@
 }
 
 .button-container {
-  text-align: center;
+text-align: center;
+justify-content: center;
 }
 
 .splash-text {
@@ -51,7 +52,9 @@
 }
 
 .splash-p-tags {
-  text-align: left;
+  text-align: center;
+  align-content: center;
+  
 }
 
 .splash-screen.fade-out {
