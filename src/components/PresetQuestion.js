@@ -3,18 +3,13 @@ import { generateText } from "./ChatGPT";
 import isDarkMode from "./Sidebar";
 
 const PresetQuestion = ({ buttonText, prompt, maxTokens, temperature }) => {
-  const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [generatedText, setGeneratedText] = useState("");
 
   const handleButtonSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const response = await generateText(
-      `${prompt}${userInput}`,
-      maxTokens,
-      temperature
-    );
+    const response = await generateText(`${prompt}`, maxTokens, temperature);
     setGeneratedText(response);
     setIsLoading(false);
   };
