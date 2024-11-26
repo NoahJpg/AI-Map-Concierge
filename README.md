@@ -1,4 +1,4 @@
-<h1 align="center">🤖 AI Map Concierge 🗺️</h1>
+<h1 align="center">🤖 AI Map Helper 🗺️</h1>
   <p align="center">
     <div style="text-align:center;">
     <img src="src/img/MapScreentshot.png" 
@@ -35,7 +35,7 @@
 
 ## Description
 
-#### _AI Map Concierge is a web app designed and developed by a solo innovator. The app merges advanced Chat AI with interactive mapping to provide real-time, location-specific insights. It offers various features like a custom question form, preset buttons for common inquiries, adjustable AI response settings, and secure user authentication. Whether it's for tourists seeking information, new residents learning about their area, or the naturally curious exploring globally, AI Map Concierge strives to make geographic knowledge accessible and personalized._
+#### _AI Map Helper is a web app designed and developed by a solo innovator. The app merges advanced Chat AI with interactive mapping to provide real-time, location-specific insights. It offers various features like a custom question form, preset buttons for common inquiries, adjustable AI response settings, and secure user authentication. Whether it's for tourists seeking information, new residents learning about their area, or the naturally curious exploring globally, AI Map Helper strives to make geographic knowledge accessible and personalized._
 
 ## Run It Here
 
