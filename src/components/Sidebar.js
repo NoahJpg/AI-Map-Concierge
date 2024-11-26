@@ -53,7 +53,7 @@ const Sidebar = ({ address }) => {
         prompt: `${helpfulAIMessage}: ${address} describe the weather in the area for each season. ${gptLengthExplanation}`,
       },
       {
-        buttonText: "What is the Walk Score®?",
+        buttonText: "How is the walkability?",
         prompt: `${helpfulAIMessage}: ${address} and tell them the Walk Score and explain what the score means. Then tell them the Transit Score, and Bike Score. ${gptLengthExplanation}`,
       },
       {
